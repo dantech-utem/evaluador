@@ -1,36 +1,128 @@
 <div class="page-content">
-
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-body rounded-0">
-                <h1 class="d-flex justify-content-center">Activar Examenes</h1>
-            </div>
-        </div>
-    </div>
-
-    <button type="button" class="btn btn-success btn-sm">Examen Nuevo</button>
-
-    <div class="col mt-4">
+    <div class="row">
         <div class="card">
             <div class="card-body">
-                <div class="container">
-                    <div class="row rounded-pill border border-dark align-items-center">
-                        <div class="col mt-3">
-                            <p class="text-end fw-bold">
-                                Examen Seguridad Social
-                            </p>
+                <div>
+                    <center>
+                    <h1 class ="bg-primary app-search btn-rounded text-light">Examenes</h1><br>
+                    </center>
+
+                    <div class="row">
+                        <div class="align-self-center col-md-6">
+                            <div class="row">
+                                <h4 class="text-uppercase bottom-50 text-center"> Nombre del examen</h4>
+                            </div>
+                            <div class="row">
+                                <input type="text" name="examen" id="examen">
+                            </div>
+                                
                         </div>
-                        <div class="col text-end mt-2">
-                            <button type="button" class="btn btn-outline-warning py-2 btn-sm"><i class="fas fa-edit"></i></button>
-                        </div>
-                        <div class="col mt-3">
-                            <div class="form-check form-switch text-left">
-                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                        <div class="col-md-5">
+                            <div class="card">      
+                                <div class="card-body">
+                                    <div>
+                                        <form action="#" class="dropzone">
+                                            <div class="fallback">
+                                                <input name="file" type="file" multiple="multiple">
+                                            </div>
+                                            <div class="dz-message needsclick">
+                                                <div class="align-self-center col-mb-6">
+                                                    <center>
+                                                    <i class="display-2 text-muted mdi mdi-cloud-upload"></i><br>
+                                                    <label> Subir archivo</label>
+                                                    </center>
+                                                </div>                         
+                                            </div> 
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+
+
+            <br><h5>Selecciona las preguntas que corresponden al examen</h5>
+
+            <div class="row">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped mb-0">
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>Pregunta a elegir</td>
+                                        <td><div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td>Pregunta a elegir</td>
+                                        <td><div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <td>Pregunta a elegir</td>
+                                        <td><div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">4</th>
+                                        <td>Pregunta a elegir</td>
+                                        <td><div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">5</th>
+                                        <td>Pregunta a elegir</td>
+                                        <td><div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">6</th>
+                                        <td>Pregunta a elegir</td>
+                                        <td><div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">7</th>
+                                        <td>Pregunta a elegir</td>
+                                        <td><div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">8</th>
+                                        <td>Pregunta a elegir</td>
+                                        <td><div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>    
             </div>
+        </div>                       
         </div>
+        <div class="align-self-md-end col-md-2">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+        </div> <br>
     </div>
 </div>

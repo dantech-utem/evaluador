@@ -30,25 +30,23 @@
                             <span>Agregar Usuario</span>
                         </a>
                     </li>
-
-                    <li>
+                <li>
                     <a href="javascript: void(0);" class="waves-effect">
                         <i class="mdi mdi-airplay"></i><span class="badge rounded-pill bg-info float-end">2</span>
-                        <span>Examenes</span>
+                        <span>Examen</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="<?php echo site_url() . "/Admin/C_admin/O_examen"; ?>" class="waves-effect">
+                            <i class="mdi mdi-file-document-multiple"></i>
+                            <span>Activar Examen</span>
+                        </a></li>
                         <li><a href="<?php echo site_url() . "/Admin/C_admin/C_examen"; ?>" class="waves-effect">
                             <i class="mdi mdi-file-document-multiple"></i>
-                            <span>Examenes</span>
-                        </a></li>
-                    </ul>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="<?php echo site_url() . "/Admin/C_admin/C_vista_examen"; ?>" class="waves-effect">
-                            <i class="mdi mdi-file-document-multiple"></i>
-                            <span>Vista de examenes</span>
+                            <span>Crear Examen</span>
                         </a></li>
                     </ul>
                 </li>
+
                     
                     
                     <li>
@@ -57,13 +55,26 @@
                             <span>Resultados</span>
                         </a>
                     </li>
-
+         
+                    <li>
+                    <a href="javascript: void(0);" class="waves-effect">
+                        <i class="mdi mdi-airplay"></i><span class="badge rounded-pill bg-info float-end">2</span>
+                        <span>Preguntas</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
                     <li>
                         <a href="<?php echo site_url() . "/Admin/C_admin/C_pregunta"; ?>" class="waves-effect">
                         <i class="mdi mdi-pencil"></i>
                             <span>Crear Pregunta</span>
                         </a>
                     </li>
+                        <li><a href="<?php echo site_url() . "/Admin/C_admin/O_pregunta"; ?>" class="waves-effect">
+                            <i class="mdi mdi-file-document-multiple"></i>
+                            <span>Activar Pregunta</span>
+                        </a></li>
+                    </ul>
+                </li>
+
 
                     <li>
                         <a href="<?php echo site_url() . "/Usuario/C_usuario/InicioU"; ?>" class="waves-effect">

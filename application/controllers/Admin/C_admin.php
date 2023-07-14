@@ -43,19 +43,27 @@ class C_admin extends CI_Controller {
 		$this->load->view('templates/footer');
 	}
 
-	public function C_examen()
+	public function O_examen()
 	{
 		$datos["title_meta"] = "Vista Examen";
 		$this->load->view('templates/header',$datos);
-		$this->load->view('Admin/C_examen');
+		$this->load->view('Admin/O_examen');
 		$this->load->view('templates/footer');
 	}
 
-	public function C_vista_examen()
+	public function O_pregunta()
+	{
+		$datos["title_meta"] = "Vista Examen";
+		$this->load->view('templates/header',$datos);
+		$this->load->view('Admin/O_pregunta');
+		$this->load->view('templates/footer');
+	}
+
+	public function C_examen()
 	{
 		$datos["title_meta"] = "Vista Examenes nuevos";
 		$this->load->view('templates/header',$datos);
-		$this->load->view('Admin/V_examen');
+		$this->load->view('Admin/C_examen');
 		$this->load->view('templates/footer');
 	}
 
