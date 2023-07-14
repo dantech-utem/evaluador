@@ -1,6 +1,25 @@
 
 /* classes attached to <body> */
 
+
+/* Estilos para el botón */
+.btn-primary {
+  margin-bottom: 10px;
+}
+
+/* Estilos para el contenido colapsado */
+.collapse {
+  display: none;
+}
+
+/* Estilos para el botón cuando el contenido está desplegado */
+.collapse.show {
+  display: block;
+}
+
+
+
+
 .fc-not-allowed,
 .fc-not-allowed .fc-event { /* override events' custom cursors */
   cursor: not-allowed;

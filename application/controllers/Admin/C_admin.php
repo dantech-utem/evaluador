@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class C_admin extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -18,21 +18,6 @@ class Welcome extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/userguide3/general/urls.html
 	 */
-	public function index()
-	{
-		//$this->load->view('welcome_message');
-		$datos["title_meta"] = "Evaluador";
-		$this->load->view('templates/header',$datos);
-		$this->load->view('templates/footer');
-	}
-
-	public function tabla()
-	{
-		$datos["title_meta"] = "Evaluador";
-		$this->load->view('templates/header',$datos);
-		$this->load->view('tabla');
-		$this->load->view('templates/footer');
-	}
 
 	public function InicioA()
 	{
@@ -42,41 +27,44 @@ class Welcome extends CI_Controller {
 		$this->load->view('templates/footer');
 	}
 
-	public function InicioU()
-	{
-		$datos["title_meta"] = "Alumno";
-		$this->load->view('templates/header',$datos);
-		$this->load->view('InicioU');
-		$this->load->view('templates/footer');
-	}
-
-	public function resultadoP()
-	{
-		$datos["title_meta"] = "Resultado";
-		$this->load->view('templates/header',$datos);
-		$this->load->view('resultadoP');
-		$this->load->view('templates/footer');
-	}
-
-	public function registroU()
+	public function R_usuarios()
 	{
 		$datos["title_meta"] = "Registro";
 		$this->load->view('templates/header',$datos);
-		$this->load->view('registroU');
+		$this->load->view('Admin/R_usuarios');
 		$this->load->view('templates/footer');
 	}
 
-	public function guardarX($id)
+	public function C_pregunta()
 	{
-		//Ir al modelo y consultar el id
-		$this->nombre_modelo->funcion($id);
+		$datos["title_meta"] = "Crear Examen";
+		$this->load->view('templates/header',$datos);
+		$this->load->view('Admin/C_pregunta');
+		$this->load->view('templates/footer');
 	}
 
-	public function guardarPost()
+	public function C_examen()
 	{
-		$this->input->post();
-		$var = $this->input->post('apellido');
-		//Ir al modelo y consultar el id
-		$this->nombre_modelo->funcion($var);
+		$datos["title_meta"] = "Vista Examen";
+		$this->load->view('templates/header',$datos);
+		$this->load->view('Admin/C_examen');
+		$this->load->view('templates/footer');
 	}
+
+	public function C_vista_examen()
+	{
+		$datos["title_meta"] = "Vista Examenes nuevos";
+		$this->load->view('templates/header',$datos);
+		$this->load->view('Admin/V_examen');
+		$this->load->view('templates/footer');
+	}
+
+	public function Cn_resultados()
+	{
+		$datos["title_meta"] = "Vista Resultados";
+		$this->load->view('templates/header',$datos);
+		$this->load->view('Admin/Cn_resultados');
+		$this->load->view('templates/footer');
+	}
+
 }
