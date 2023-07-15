@@ -1,5 +1,5 @@
 
-/* classes attached to <body> */
+/* Estilos agregados*/
 
 
 /* Estilos para el botón */
@@ -17,6 +17,19 @@
   display: block;
 }
 
+
+.small-image {
+  width: 65%; /* Ajusta el ancho deseado */
+  height: 65%; /* Ajusta la altura proporcionalmente */
+
+
+}
+
+
+
+
+
+/* Estilos de plantilla hacia abajo */
 
 
 

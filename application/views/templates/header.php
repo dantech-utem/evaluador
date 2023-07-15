@@ -11,6 +11,7 @@
 
     <!-- Plugins css -->
     <link href="assets/libs/dropzone/min/dropzone.min.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url(); ?>assets/css/main.css" rel="stylesheet" type="text/css" />
 
     <!-- Bootstrap Css -->
     <link href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />

@@ -23,7 +23,7 @@ class C_admin extends CI_Controller {
 	{
 		$datos["title_meta"] = "Admin";
 		$this->load->view('templates/header',$datos);
-		$this->load->view('InicioA');
+		$this->load->view('Admin/InicioA');
 		$this->load->view('templates/footer');
 	}
 

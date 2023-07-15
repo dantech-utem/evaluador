@@ -14,11 +14,12 @@
                         <div class="bg-login text-center">
                             <div class="bg-login-overlay"></div>
                                 <div class="position-relative">
+                                <div>
+                                <img src="../../assets/images/login-user.png" height="100">
+                                </div>
                                     <h5 class="text-white font-size-20">Bienvenido!</h5>
                                     <p class="text-white-50 mb-0">Inicia sesion para continuar.</p>
-                                    <a href="/" class="logo logo-admin mt-4">
-                                        <img src="../../assets/images/login-user.png" alt="logo-sm-dark" height="30">
-                                    </a>
+                                        
                                 </div>
                             </div>
                             <div class="card-body pt-5">

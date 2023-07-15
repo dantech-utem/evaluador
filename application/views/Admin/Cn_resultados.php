@@ -1,4 +1,11 @@
 <div class="page-content">
+<div class="col-md-12">
+        <div class="card">
+            <div class="card-body rounded-0">
+                <h1 class="d-flex justify-content-center">Resultados</h1>
+            </div>
+        </div>
+    </div>
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">Usuario: [Nombre del Usuario]</h4>

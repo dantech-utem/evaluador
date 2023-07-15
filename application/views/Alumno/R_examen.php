@@ -1,5 +1,11 @@
 <div class="page-content">
-
+<div class="col-md-12">
+        <div class="card">
+            <div class="card-body rounded-0">
+                <h1 class="d-flex justify-content-center">Calificaciones</h1>
+            </div>
+        </div>
+    </div>
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
