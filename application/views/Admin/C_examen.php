@@ -10,6 +10,7 @@
                             </div>
                         </div>
                     </div>
+                    
                     <div class="row">
                         <div class="align-self-center col-md-6">
                             <div class="row">

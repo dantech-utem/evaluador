@@ -15,7 +15,7 @@
                             <div class="bg-login-overlay"></div>
                                 <div class="position-relative">
                                 <div>
-                                <img src="../../assets/images/login-user.png" height="100">
+                                <img src="<?php echo base_url(); ?>assets/images/login-user.png" height="100">
                                 </div>
                                     <h5 class="text-white font-size-20">Bienvenido!</h5>
                                     <p class="text-white-50 mb-0">Inicia sesion para continuar.</p>
