@@ -64,15 +64,6 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card mb-4">
-                    <div class="card-body text-center">
-                        <i class="fas fa-flask fa-3x mb-3"></i>
-                        <h5 class="card-title">Examen Práctico</h5>
-                        <button class="btn btn-primary">Seleccionar</button>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 
