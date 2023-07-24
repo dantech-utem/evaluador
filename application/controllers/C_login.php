@@ -16,32 +16,35 @@ class C_login extends CI_Controller {
 
 	public function iniciarSesion() {
 		$correo = $this->input->post('Usuario');
-        $contraseña = $this->input->post('Contraseña');
-
-        $user = $this->M_login->obtenerUsuario($correo, $contraseña);
-
-        if ($user) {
-            $this->session->set_userdata('id_perfil', $user->id_perfil);
+		$contraseña = $this->input->post('Contraseña');
+	
+		$user = $this->M_login->obtenerUsuario($correo, $contraseña);
+	
+		if ($user) {
+			$this->session->set_userdata('id_perfil', $user->id_perfil);
 			$this->session->set_userdata('nombre_usuario', $user->nombre);
-
-            if ($user->id_perfil == '1') {
+	
+			if ($user->id_perfil == '1') {
 				$datos["title_meta"] = "Admin";
-				$this->load->view('templates/header',$datos);
+				$this->load->view('templates/header', $datos);
 				$this->load->view('Admin/InicioA');
 				$this->load->view('templates/footer');
-            } else {
+			} else {
 				$datos["title_meta"] = "Alumno";
-				$this->load->view('templates/header',$datos);
+				$this->load->view('templates/header', $datos);
 				$this->load->view('Alumno/InicioU');
 				$this->load->view('templates/footer');
-            }
-        } else {
-            $data['error'] = 'Usuario o contraseña incorrectos.';
-            $this->load->view('login', $data);
-            $datos["title_meta"] = "Login";
-            $this->load->view('templates/head-css',$datos);
-        }
-    }
+			}
+		} else {
+			// Usuario o contraseña incorrectos, mostramos la alerta
+			$data['error'] = 'Usuario o contraseña incorrectos.';
+			$this->load->view('Login/login', $data);
+	
+			
+		}
+	}
+	
+	
 
     public function recuperar()
 	{

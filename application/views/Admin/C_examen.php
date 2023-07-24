@@ -137,8 +137,13 @@
                     </div>
                 </div>
             </div>
-            <div class="align-self-md-end col-md-2">
-                <button type="submit" class="btn btn-primary">Guardar</button>
-            </div> <br>
+            <div class="row">
+                    <div class="col-md-6">
+                        <button class="btn btn-secondary w-100 waves-effect waves-light" type="button">Cancelar</button>
+                    </div>
+                    <div class="col-md-6">
+                        <button class="btn btn-primary w-100 waves-effect waves-light" type="submit">Register</button>
+                    </div>
+                </div> <br>
         </div>
     </div>

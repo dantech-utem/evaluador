@@ -32,19 +32,25 @@
                         <li>
                             <a href="<?php echo site_url() . "/Admin/C_Admin/InicioA"; ?>" class="waves-effect">
                                 <i class="mdi mdi-home"></i>
-                                <span>Inicio</span>
+                                <span>Panel De Control</span>
                             </a>
                         </li>
                         <li>
                             <a href="<?php echo site_url() . "/Admin/C_admin/R_usuarios"; ?>" class="waves-effect">
                                 <i class="mdi mdi-account-multiple"></i>
-                                <span>Agregar usuario</span>
+                                <span>Usuarios</span>
                             </a>
                         </li>
                         <li>
                             <a href="<?php echo site_url() . "/Admin/C_admin/O_examen"; ?>" class="waves-effect">
                                 <i class="mdi mdi-file-document"></i>
-                                <span>Examen</span>
+                                <span>Exámenes</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?php echo site_url() . "/Admin/C_admin/O_pregunta"; ?>" class="waves-effect">
+                                <i class="mdi mdi-pencil"></i>
+                                <span>Preguntas</span>
                             </a>
                         </li>
                         <li>
@@ -53,12 +59,7 @@
                                 <span>Resultados</span>
                             </a>
                         </li>
-                        <li>
-                            <a href="<?php echo site_url() . "/Admin/C_admin/O_pregunta"; ?>" class="waves-effect">
-                                <i class="mdi mdi-pencil"></i>
-                                <span>Pregunta</span>
-                            </a>
-                        </li>
+                       
                     <?php else: ?>
                         <li>
                             <a href="<?php echo site_url() . "/Usuario/C_usuario/InicioU"; ?>" class="waves-effect">
@@ -70,12 +71,6 @@
                             <a href="<?php echo site_url() . "/Usuario/C_usuario/R_examen"; ?>" class="waves-effect">
                                 <i class="mdi mdi-star"></i>
                                 <span>Calificaciones</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="<?php echo site_url() . "/Usuario/C_usuario/Examen"; ?>" class="waves-effect">
-                            <i class="mdi mdi-file-document"></i>
-                                <span>Examenes</span>
                             </a>
                         </li>
                     <?php endif; ?>

@@ -53,7 +53,14 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="btn btn-primary" type="submit">Enviar</button>
+                        <div class="row">
+                    <div class="col-md-6">
+                        <button class="btn btn-secondary w-100 waves-effect waves-light" type="button">Cancelar</button>
+                    </div>
+                    <div class="col-md-6">
+                        <button class="btn btn-primary w-100 waves-effect waves-light" type="submit">Register</button>
+                    </div>
+                </div>
                     </form>
                     <!-- FIN DEL FORMULARIO -->
                 </div>
