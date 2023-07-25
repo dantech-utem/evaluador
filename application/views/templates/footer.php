@@ -33,9 +33,11 @@
     <script src="<?php echo base_url(); ?>assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/libs/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
-
+    <script src="<?php echo base_url(); ?>assets/libs/jquery.repeater/jquery.repeater.min.js"></script>
+              
     <!-- form advanced init -->
     <script src="<?php echo base_url(); ?>assets/js/pages/form-advanced.init.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/pages/form-repeater.init.js"></script> 
 
     <!-- App js -->
     <script src="<?php echo base_url(); ?>assets/js/app.js"></script>
