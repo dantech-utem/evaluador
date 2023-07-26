@@ -20,11 +20,10 @@
                             <div class="bg-login-overlay"></div>
                             <div class="position-relative">
                                 <div>
-                                    <img src="../../assets/images/login-user.png" height="100">
+                                    <img src="../../assets/images/logo.png" height="100">
                                 </div>
                                 <h5 class="text-white font-size-20">Bienvenido!</h5>
                                 <p class="text-white-50 mb-0">Inicia sesion para continuar.</p>
-
                             </div>
                         </div>
                         <div class="card-body pt-5">
@@ -41,23 +40,20 @@
                                         </div>
                                     </center>
                                     <div class="mb-3">
-                                        <label class="form-label" for="username">Correo</label>
+                                        <label class="form-label" for="username">Usuario</label>
                                         <input type="text" class="form-control" name="Usuario"
-                                            placeholder="Ingresa tu correo">
+                                            placeholder="Ingresa tu Usuario">
                                     </div>
-
                                     <div class="mb-3">
                                         <label class="form-label" for="userpassword">Contraseña</label>
                                         <input type="password" class="form-control" name="Contraseña"
                                             placeholder="Ingresa tu contraseña">
                                     </div>
-
                                     <div class="mt-3">
                                         <button class="btn btn-primary w-100 waves-effect waves-light" type="submit">
-                                            iniciar Sesion
+                                            Iniciar Sesion
                                         </button>
                                     </div>
-
                                     <div class="mt-4 text-center">
                                         <a href="<?php echo site_url() . "/C_login/recuperar"; ?>" class="text-muted"><i
                                                 class="mdi mdi-lock me-1"></i>Olvidaste tu contraseña?</a>

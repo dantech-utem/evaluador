@@ -1,4 +1,4 @@
-                <footer class="footer">
+<footer class="footer">
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-sm-6">
@@ -21,6 +21,7 @@
     <!-- end container-fluid -->
 
     <!-- JAVASCRIPT -->
+   
     <script src="<?php echo base_url(); ?>assets/libs/jquery/jquery.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/libs/metismenu/metisMenu.min.js"></script>
@@ -33,15 +34,20 @@
     <script src="<?php echo base_url(); ?>assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/libs/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
-
+    <script src="<?php echo base_url(); ?>assets/libs/jquery.repeater/jquery.repeater.min.js"></script>
+              
     <!-- form advanced init -->
     <script src="<?php echo base_url(); ?>assets/js/pages/form-advanced.init.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/pages/form-repeater.init.js"></script> 
+
+    <!-- Plugins js -->
+    <script src="<?php echo base_url(); ?>assets/libs/dropzone/min/dropzone.min.js"></script>
 
     <!-- App js -->
     <script src="<?php echo base_url(); ?>assets/js/app.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/scrips.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+   
 </body>
 
 </html>

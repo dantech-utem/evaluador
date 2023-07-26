@@ -8,12 +8,14 @@
         </div>
     </div>
 
-    <a href="<?php echo site_url() . "/Admin/C_admin/C_pregunta"; ?>" class="waves-effect">Crear Pregunta</a>
+    <a class="btn btn-primary" href="<?php echo site_url() . "/Admin/C_admin/C_pregunta"; ?>" class="waves-effect">Crear Pregunta</a>
+
+    <br />
+    <br />
 
     <div class="card">
     <div class="card-body">
         <h4 class="card-title">Preguntas</h4>
-
         <div class="table-responsive">
             <table class="table table-bordered">
                 <thead>
@@ -27,7 +29,7 @@
                     <tr>
                         <td>Pregunta X</td>
                         <td>
-                            <button type="button" class="btn btn-outline-warning btn-sm"><i class="fas fa-edit"></i> Editar</button>
+                            <button type="button"class="btn btn-outline-warning btn-sm"><i class="fas fa-edit"></i> Editar</button>
                         </td>
                         <td>
                             <div class="form-check form-switch">

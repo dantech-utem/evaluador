@@ -8,12 +8,13 @@
         </div>
     </div>
 
-    <a href="<?php echo site_url() . "/Admin/C_admin/C_examen"; ?>" class="waves-effect">Crear Examen</a>
+    <a class="btn btn-primary" href="<?php echo site_url() . "/Admin/C_admin/C_examen"; ?>" class="waves-effect">Crear Examen</a>.
+
+    <br />
+    <br />
 
     <div class="card">
     <div class="card-body">
-        <h4 class="card-title">Examenes</h4>
-
         <div class="table-responsive">
             <table class="table table-bordered">
                 <thead>

@@ -2,8 +2,8 @@
     <div class="h-100">
         <div class="user-wid text-center py-4">
             <div class="user-img">
-                <img src="<?php echo base_url(); ?>assets/images/users/avatar-2.jpg" alt=""
-                    class="avatar-md mx-auto rounded-circle">
+                <i class="fas fa-user avatar-icon" ></i>
+                    
             </div>
             <div class="mt-3">
                 <a href="javascript: void(0);" class="text-dark fw-medium font-size-16">

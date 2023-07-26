@@ -2,13 +2,13 @@
 <div class="col-md-12">
         <div class="card">
             <div class="card-body rounded-0">
-                <h1 class="d-flex justify-content-center">Resultados</h1>
+                <h1 class="d-flex justify-content-center">Resultados de Examenes</h1>
             </div>
         </div>
     </div>
     <div class="card">
     <div class="card-body d-flex justify-content-between align-items-center">
-        <h4 class="card-title">Usuario: [Nombre del Usuario]</h4>
+        <h4 class="card-title">Sared</h4>
 
         <button type="button" class="btn btn-primary" id="toggleButton">
             Mostrar Calificaciones
