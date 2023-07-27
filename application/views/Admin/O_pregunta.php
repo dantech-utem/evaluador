@@ -15,6 +15,7 @@
         <h4 class="card-title">Preguntas</h4>
 
         <div class="table-responsive">
+        <?php foreach($Preguntas as $preguntas){?>
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -25,9 +26,9 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Pregunta X</td>
+                        <td><?php echo $preguntas->texto;?></td>
                         <td>
-                            <button type="button" class="btn btn-outline-warning btn-sm"><i class="fas fa-edit"></i> Editar</button>
+                            <a  type="button" class="btn btn-outline-warning btn-sm" href="<?php echo site_url()."/Admin/C_Preguntas/editarPreguntas/".$preguntas->id ?>"><i class="fas fa-edit"></i></i> Editar</a>
                         </td>
                         <td>
                             <div class="form-check form-switch">
@@ -36,6 +37,7 @@
                             </div>
                         </td>
                     </tr>
+                    <?php } ?>
                     <!-- Agrega más filas de la tabla aquí -->
                 </tbody>
             </table>

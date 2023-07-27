@@ -54,7 +54,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="<?php echo site_url() . "/Admin/C_admin/O_pregunta"; ?>" class="waves-effect">
+                            <a href="<?php echo site_url() . "/Admin/C_Preguntas/preguntas"; ?>" class="waves-effect">
                                 <i class="mdi mdi-pencil"></i>
                                 <span>Pregunta</span>
                             </a>
