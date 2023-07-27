@@ -76,13 +76,6 @@ class C_admin extends CI_Controller {
 		$this->load->view('templates/footer');
 	}
 
-	public function O_pregunta()
-	{
-		$datos["title_meta"] = "Vista Examen";
-		$this->load->view('templates/header',$datos);
-		$this->load->view('Admin/O_pregunta');
-		$this->load->view('templates/footer');
-	}
 
 	public function C_examen()
 	{
