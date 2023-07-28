@@ -21,7 +21,7 @@
                         <div class="col-lg-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <form  class="outer-repeater" action="<?php echo isset($pregunta) ? site_url().'/Admin/C_Preguntas/updatePreguntas/'.$pregunta->id_preguntas : site_url().'/Admin/C_Preguntas/Guardarpregunta';?>" method="post">
+                                    <form  class="outer-repeater" action="<?php echo isset($pregunta) ? site_url().'/Admin/C_Preguntas/updatePregunta/'.$pregunta->id_preguntas : site_url().'/Admin/C_Preguntas/Guardarpregunta';?>" method="post">
                                         <div data-repeater-list="outer-group" class="outer">
                                             <div data-repeater-item class="outer">
                                                 <div class="mb-3">
