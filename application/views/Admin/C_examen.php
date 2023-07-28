@@ -18,7 +18,7 @@
                                 <h4 class="text-uppercase bottom-50 text-center">Nombre del examen</h4>
                             </div>
                             <div class="row">
-                                <input type="text" name="examen" id="examen">
+                                <input type="text" name="examen" id="examen" >
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -48,28 +48,23 @@
                     <div class="row">
                         <div class="card">
                             <div class="card-body">
-                                <table id="datatable" class="table table-bordered dt-responsive nowrap"
-                                    style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Pregunta</th>
-                                            <th>Estado</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Pregunta a elegir</td>
-                                            <td>
-                                                <div class="form-check form-switch">
-                                                    <input class="form-check-input" type="checkbox"
-                                                        id="flexSwitchCheckChecked" checked>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <div class="table-responsive">
+                                    <table class="table table-striped mb-0">
+                                        <tbody>
+                                            <!-- Aquí van las filas de las preguntas -->
+                                            <tr>
+                                                <th scope="row">1</th>
+                                                <td>Pregunta a elegir</td>
+                                                <td>
+                                                    <div class="form-check form-switch">
+                                                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <!-- Agregar las demás filas de preguntas -->
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -79,11 +74,10 @@
     </div>
     <div class="row">
         <div class="col-md-6">
-            <a class="btn btn-danger w-100 waves-effect waves-light"
-                href="<?php echo site_url() . "/Admin/C_Examen/O_examen"; ?>" type="button">Cancelar</a>
+            <button class="btn btn-secondary w-100 waves-effect waves-light" type="button">Cancelar</button>
         </div>
         <div class="col-md-6">
-            <button class="btn btn-primary w-100 waves-effect waves-light" type="submit">Registrar</button>
+            <button class="btn btn-primary w-100 waves-effect waves-light" type="submit">Register</button>
         </div>
     </div>
 </div>

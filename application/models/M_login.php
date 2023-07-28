@@ -72,7 +72,7 @@ class M_login extends CI_Model {
 //AGREGAR USUARIOS
 
     
-    public function agregarUsuario($nombre,$apellido,$correo,$contrasena,$tipousuario,$foto_perfil){
+    public function agregarUsuario($nombre,$apellido,$correo,$contrasena,$tipousuario){
         
 		
 		$data = array(
@@ -80,10 +80,7 @@ class M_login extends CI_Model {
 			"apellido"=>$apellido,
 			"correo_electronico"=>$correo,
 			"contraseña"=>$contrasena,
-			"id_perfil"=>$tipousuario,
-            "foto_perfil"=>$foto_perfil,
-            "estatus_examen" => 2
-            
+			"id_perfil"=>$tipousuario
 		);
 
         $this->db->query("ALTER TABLE usuarios AUTO_INCREMENT 1");
@@ -109,22 +106,14 @@ class M_login extends CI_Model {
     public function asociarExamenesUsuario($usuario_id, $examenesSeleccionados) {
         // Asociar los exámenes seleccionados al usuario en la tabla "usuarios_examenes"
         foreach ($examenesSeleccionados as $examen_id) {
-            // Verificar si ya existe una fila con esta combinación de usuario_id y examen_id
-            $this->db->where('usuario_id', $usuario_id);
-            $this->db->where('examen_id', $examen_id);
-            $query = $this->db->get('usuariosexamen');
-    
-            // Si no hay resultados, entonces realizar la inserción
-            if ($query->num_rows() == 0) {
-                $data = array(
-                    'usuario_id' => $usuario_id,
-                    'examen_id' => $examen_id
-                );
-                $this->db->insert('usuariosexamen', $data);
-            }
+            $data = array(
+                'usuario_id' => $usuario_id,
+                'examen_id' => $examen_id
+            );
+            $this->db->insert('usuariosexamen', $data);
         }
     }
-    
+
 
     
 

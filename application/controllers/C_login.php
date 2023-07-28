@@ -103,8 +103,7 @@ class C_login extends CI_Controller {
 			}
         } else {
             //el correo electrónico no existe en la base de datos
-            $data['failed'] = "Correo no encontrado.";
-       		$this->load->view('Login/recuperar', $data);
+            echo 'Correo no encontrado en la base de datos';
 			
         }
     }
@@ -129,7 +128,7 @@ class C_login extends CI_Controller {
              $this->M_login->guardarNuevaContrasena($user['id_usuarios'], $contrasena);
 
                 // Puedes mostrar un mensaje de éxito o redireccionar a una página de éxito.
-            $data['success'] = "Contraseña actualizada correctamente.";
+            $data['success'] = "Contraseña actualiza correctamente.";
             $this->load->view('Login/login', $data);
             }
         } else {

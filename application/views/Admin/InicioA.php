@@ -1,140 +1,108 @@
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <div class="page-content">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-body rounded-0">
-                    <h1 class="d-flex justify-content-center">Dashboard</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body rounded-0">
+                        <h1 class="d-flex justify-content-center">DashBoard</h1>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-xl-3">
-            <div class="card">
-                <div class="card-body">
-                    <div class="d-flex align-items-start">
-                        <div class="avatar-sm font-size-20 me-3">
-                            <span class="avatar-title bg-soft-primary text-primary rounded">
-                                <i class="mdi mdi-tag-plus-outline"></i>
-                            </span>
-                        </div>
-                        <div class="flex-1">
-                            <div class="font-size-16 mt-2">New Orders</div>
+
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <canvas id="examPieChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="row mt-4">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Nombre del Examen</th>
+                                                <th>Cantidad de Alumnos</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Examen 1</td>
+                                                <td>50</td>
+                                            </tr>
+                                            <!-- ... Otras filas ... -->
+                                            <tr>
+                                                <td>Examen 6</td>
+                                                <td>55</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <h4 class="mt-4">1,368</h4>
-                    <div class="row">
-                        <div class="col-7">
-                            <p class="mb-0"><span class="text-success me-2"> 0.28% <i class="mdi mdi-arrow-up"></i>
-                                </span></p>
-                        </div>
-                        <div class="col-5 align-self-center">
-                            <div class="progress progress-sm">
-                                <div class="progress-bar bg-primary" role="progressbar" style="width: 62%"
-                                    aria-valuenow="62" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Examenes Creados</th>
+                                                <th>Cantidad de Examenes</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Examenes</td>
+                                                <td>4</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="card">
-                <div class="card-body">
-                    <div class="d-flex align-items-start">
-                        <div class="avatar-sm font-size-20 me-3">
-                            <span class="avatar-title bg-soft-primary text-primary rounded">
-                                <i class="mdi mdi-account-multiple-outline"></i>
-                            </span>
-                        </div>
-                        <div class="flex-1">
-                            <div class="font-size-16 mt-2">New Users</div>
-
-                        </div>
-                    </div>
-                    <h4 class="mt-4">2,456</h4>
-                    <div class="row">
-                        <div class="col-7">
-                            <p class="mb-0"><span class="text-success me-2"> 0.16% <i class="mdi mdi-arrow-up"></i>
-                                </span></p>
-                        </div>
-                        <div class="col-5 align-self-center">
-                            <div class="progress progress-sm">
-                                <div class="progress-bar bg-success" role="progressbar" style="width: 62%"
-                                    aria-valuenow="62" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-xl-6">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title mb-4">Sales Report</h4>
-
-                    <div id="line-chart" class="apex-charts"></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-xl-3">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title mb-4">Inbox</h4>
-
-                    <ul class="inbox-wid list-unstyled">
-                        <li class="inbox-list-item">
-                            <a href="javascript: void(0);">
-                                <div class="d-flex align-items-start">
-                                    <div class="me-3 align-self-center">
-                                    </div>
-                                    <div class="flex-1 overflow-hidden">
-                                        <h5 class="font-size-16 mb-1">Paul</h5>
-                                        <p class="text-truncate mb-0">Hey! there I'm available</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="inbox-list-item">
-                            <a href="javascript: void(0);">
-                                <div class="d-flex align-items-start">
-                                    <div class="me-3 align-self-center">
-                                    </div>
-                                    <div class="flex-1 overflow-hidden">
-                                        <h5 class="font-size-16 mb-1">Mary</h5>
-                                        <p class="text-truncate mb-0">This theme is awesome!</p>
-                                    </div>
-
-                                </div>
-                            </a>
-                        </li>
-                        <li class="inbox-list-item">
-                            <a href="javascript: void(0);">
-                                <div class="d-flex align-items-start">
-                                    <div class="me-3 align-self-center">
-                                    </div>
-                                    <div class="flex-1 overflow-hidden">
-                                        <h5 class="font-size-16 mb-1">Cynthia</h5>
-                                        <p class="text-truncate mb-0">Nice to meet you</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="inbox-list-item">
-                            <a href="javascript: void(0);">
-                                <div class="d-flex align-items-start">
-                                    <div class="me-3 align-self-center">
-                                    </div>
-                                    <div class="flex-1 overflow-hidden">
-                                        <h5 class="font-size-16 mb-1">Darren</h5>
-                                        <p class="text-truncate mb-0">I've finished it! See you so</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
         </div>
     </div>
-    <!-- end row -->
+</div>
+
+
+
+
+
+<script>
+    var ctx2 = document.getElementById('examPieChart').getContext('2d');
+    var myPieChart = new Chart(ctx2, {
+        type: 'pie',
+        data: {
+            labels: ['Examen 1', 'Examen 2', 'Examen 3', 'Examen 4', 'Examen 5', 'Examen 6'],
+            datasets: [{
+                data: [50, 40, 35, 60, 75, 55],
+                backgroundColor: ['rgba(255, 99, 132, 0.7)', 'rgba(54, 162, 235, 0.7)', 'rgba(255, 205, 86, 0.7)', 'rgba(75, 192, 192, 0.7)', 'rgba(153, 102, 255, 0.7)', 'rgba(255, 159, 64, 0.7)'],
+                borderColor: ['#fff'],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            plugins: {
+                legend: {
+                    position: 'right'
+                }
+            }
+        }
+    });
+</script>
+
