@@ -36,13 +36,13 @@
                             </a>
                         </li>
                         <li>
-                            <a href="<?php echo site_url() . "/Admin/C_admin/R_usuarios"; ?>" class="waves-effect">
+                            <a href="<?php echo site_url() . "/Admin/C_Usuarios/R_usuarios"; ?>" class="waves-effect">
                                 <i class="mdi mdi-account-multiple"></i>
                                 <span>Usuarios</span>
                             </a>
                         </li>
                         <li>
-                            <a href="<?php echo site_url() . "/Admin/C_admin/O_examen"; ?>" class="waves-effect">
+                            <a href="<?php echo site_url() . "/Admin/C_Examen/O_examen"; ?>" class="waves-effect">
                                 <i class="mdi mdi-file-document"></i>
                                 <span>Exámenes</span>
                             </a>
