@@ -66,20 +66,25 @@ class C_Preguntas extends CI_Controller {
 
 	}
 
-	public function updatePreguntas ($pregunta_id){
+	public function updatePregunta($id_pregunta)
+	{
+		//print_r($this->input->post());
+		
 		if($this->input->post()){
-			$pregunta_id = $this->input->post('pregunta_id');
-			$this->M_prototipo->updatePreguntas($this->input->post(), $pregunta_id);
-			if( $this->db->affected_rows() == 0 ){ 
-				//print_r($this->input->post());
-				$this->editarPreguntas($pregunta_id);	
-			}
-		    else {
-		    	
-		    }
-
+			$res = $this->input->post('outer-group');
+			$this->M_prototipo->updatePregunta($id_pregunta,$res [0]['texto_p']);
+			$this->M_prototipo->borrarRespuesta($id_pregunta);
+			
+			foreach($res[0]['inner-group'] as $respuestas)
+				{
+					$this->Guardarrespuesta($id_pregunta, $respuestas);
+				}
 			
 		}
+		$this->preguntas();
 	}
+
+
+	
 }
 ?>
