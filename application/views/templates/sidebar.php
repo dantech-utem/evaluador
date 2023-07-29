@@ -36,7 +36,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="<?php echo site_url() . "/Admin/C_admin/R_usuarios"; ?>" class="waves-effect">
+                            <a href="<?php echo site_url() . "/Admin/C_admin/O_usuarios"; ?>" class="waves-effect">
                                 <i class="mdi mdi-account-multiple"></i>
                                 <span>Usuarios</span>
                             </a>

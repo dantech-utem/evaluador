@@ -3,19 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class C_admin extends CI_Controller {
 
-	public function __construct()
-    {
-        parent::__construct();
-        $this->load->model('M_login');
-		
-    }
-
-
 	 public function __construct(){
 		parent::__construct();
 
 		$this->load->model('M_examen');
 		$this->load->model('M_preguntas');
+		$this->load->model('M_login');
 	}
 
 	public function InicioA()
@@ -26,13 +19,13 @@ class C_admin extends CI_Controller {
 		$this->load->view('templates/footer');
 	}
 
-	public function R_usuarios()
+	public function O_usuarios()
 	{
 		$datos["title_meta"] = "Registro";
 		$this->load->view('templates/header',$datos);
 		$data['examenes'] = $this->M_login->obtenerExamenes();
 		
-		$this->load->view('Admin/R_usuarios', $data);
+		$this->load->view('Admin/O_usuarios', $data);
 		$this->load->view('templates/footer');
 	}
 	public function agregarUsuario(){

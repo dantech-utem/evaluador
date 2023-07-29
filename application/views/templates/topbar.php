@@ -20,7 +20,7 @@
                             href="<?php echo site_url() . "/Admin/C_admin/R_contrasena"; ?>"><i
                                 class="bx bx bx-user font-size-16 align-middle me-1 text-Dark"></i> Perfil</a>
                         <a class="dropdown-item text-danger" href="<?php echo site_url() . "/C_login/salir"; ?>"><i
-                                class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> Logout</a>
+                                class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> Cerrar Sesion</a>
 
                     </div>
                 </div>

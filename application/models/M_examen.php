@@ -1,7 +1,4 @@
-<!-- 
-  todo
-  vistas de base de datos 
--->
+
 
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
