@@ -1,41 +1,40 @@
 <div class="page-content">
-<div class="col-md-12">
-        <div class="card">
-            <div class="card-body rounded-0">
-                <h1 class="d-flex justify-content-center">Resultados</h1>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body rounded-0">
+                    <h1 class="d-flex justify-content-center">Resultados de Examenes</h1>
+                </div>
             </div>
         </div>
     </div>
-    <div class="card">
-        <div class="card-body">
-            <h4 class="card-title">Usuario: [Nombre del Usuario]</h4>
 
-            <button type="button" class="btn btn-primary" id="toggleButton">
-                Mostrar Calificaciones
-            </button>
-
-            <div class="collapse" id="calificaciones">
-                <div class="table-responsive">
-                    <table class="table mb-0">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title"></h4>
+                    <table id="datatable" class="table table-bordered dt-responsive nowrap"
+                        style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                         <thead>
                             <tr>
-                                <th>Examen</th>
-                                <th>Porcentaje Obtenido</th>
+                                <th>#</th>
+                                <th>Nombre</th>
+                                <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Examen 1</td>
-                                <td>85%</td>
+                                <td>1</td>
+                                <td>
+                                    <img src="" alt="Foto"> Alumno
+                                </td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary" type="button"
+                                        data-bs-toggle="modal" data-bs-target="#exampleModal2">Mostrar Calificaciones</button>
+                                </td>
                             </tr>
-                            <tr>
-                                <td>Examen 2</td>
-                                <td>92%</td>
-                            </tr>
-                            <tr>
-                                <td>Examen 3</td>
-                                <td>78%</td>
-                            </tr>
+                            <!-- Agrega más filas de la tabla aquí -->
                         </tbody>
                     </table>
                 </div>
@@ -43,15 +42,3 @@
         </div>
     </div>
 </div>
-
-</div>
-
-
-
-
-<script>
-
-
-
-
-</script>

@@ -3,21 +3,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class C_admin extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/userguide3/general/urls.html
-	 */
+	public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('M_login');
+		
+    }
+
 
 	 public function __construct(){
 		parent::__construct();
@@ -38,10 +30,43 @@ class C_admin extends CI_Controller {
 	{
 		$datos["title_meta"] = "Registro";
 		$this->load->view('templates/header',$datos);
-		$this->load->view('Admin/R_usuarios');
+		$data['examenes'] = $this->M_login->obtenerExamenes();
+		
+		$this->load->view('Admin/R_usuarios', $data);
 		$this->load->view('templates/footer');
 	}
+	public function agregarUsuario(){
 
+		$nombre = $this->input->post("nombre");
+		$apellido = $this->input->post("apellido");
+		$correo = $this->input->post("correo");
+		$contrasena = $this->input->post("contrasena");
+		$tipousuario = $this->input->post("tipo_usuario");
+		$examenesSeleccionados = $this->input->post('examenes');
+		
+			$usuario_id = $this->M_login->agregarUsuario($nombre,$apellido,$correo,$contrasena,$tipousuario);
+			
+			if ($usuario_id) {
+                // Asociar los exámenes seleccionados al usuario
+                $this->M_login->asociarExamenesUsuario($usuario_id, $examenesSeleccionados);
+
+                // Redireccionar o mostrar mensaje de éxito
+				$this->R_usuarios();
+            } else {
+                // Mostrar mensaje de error en caso de que falle la creación del usuario
+                echo "Error al crear el usuario";
+            }
+			
+	}
+
+	public function AsignarE()
+	{
+		$datos["title_meta"] = "Admin";
+		$this->load->view('templates/header',$datos);
+		$this->load->view('Admin/A_Examen');
+		$this->load->view('templates/footer');
+	}
+	
 	public function C_pregunta()
 	{
 		$datos["title_meta"] = "Crear Examen";
@@ -131,6 +156,14 @@ class C_admin extends CI_Controller {
 		        redirect('Admin/C_admin/editExamen/'.$id);
 	}
 
+
+	public function C_Usuario()
+	{
+		$datos["title_meta"] = "Crear Usuario";
+		$this->load->view('templates/header',$datos);
+		$this->load->view('Admin/C_Usuario');
+		$this->load->view('templates/footer');
+	}
 	public function Cn_resultados()
 	{
 		$datos["title_meta"] = "Vista Resultados";
