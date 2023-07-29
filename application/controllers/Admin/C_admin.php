@@ -101,4 +101,12 @@ class C_admin extends CI_Controller {
 		$this->load->view('templates/footer');
 	}
 
+	public function R_contrasena()
+	{
+		$datos["title_meta"] = "Vista Resultados";
+		$this->load->view('templates/header',$datos);
+		$this->load->view('Admin/R_contrasena');
+		$this->load->view('templates/footer');
+	}
+
 }
