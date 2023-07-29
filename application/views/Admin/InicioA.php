@@ -11,68 +11,106 @@
                 </div>
             </div>
         </div>
-
-        <div class="row mt-4">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-body">
-                        <canvas id="examPieChart"></canvas>
+    </div>
+    <div class="row">
+        <div class="col-xl-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex align-items-start">
+                        <div class="avatar-sm font-size-20 me-3">
+                            <span class="avatar-title bg-soft-primary text-primary rounded">
+                            <i class="mdi mdi-file-document"></i>
+                            </span>
+                        </div>
+                        <div class="flex-1">
+                            <div class="font-size-16 mt-2">Examenes</div>
+                        </div>
+                    </div>
+                    <h4 class="mt-4">1,368</h4>
+                    <div class="row">
+                        <div class="col-5 align-self-center">
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="row mt-4">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th>Nombre del Examen</th>
-                                                <th>Cantidad de Alumnos</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Examen 1</td>
-                                                <td>50</td>
-                                            </tr>
-                                            <!-- ... Otras filas ... -->
-                                            <tr>
-                                                <td>Examen 6</td>
-                                                <td>55</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex align-items-start">
+                        <div class="avatar-sm font-size-20 me-3">
+                            <span class="avatar-title bg-soft-primary text-primary rounded">
+                                <i class="mdi mdi-account-multiple-outline"></i>
+                            </span>
+                        </div>
+                        <div class="flex-1">
+                            <div class="font-size-16 mt-2">Usuarios</div>
+
+                        </div>
+                    </div>
+                    <h4 class="mt-4">2,456</h4>
+                    <div class="row">       
+                        <div class="col-5 align-self-center">
                         </div>
                     </div>
                 </div>
-                <div class="row mt-4">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th>Examenes Creados</th>
-                                                <th>Cantidad de Examenes</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Examenes</td>
-                                                <td>4</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+            </div>
+        </div>
+
+        <div class="col-xl-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-4">Inbox</h4>
+
+                    <ul class="inbox-wid list-unstyled">
+                        <li class="inbox-list-item">
+                            <a href="javascript: void(0);">
+                                <div class="d-flex align-items-start">
+                                    <div class="me-3 align-self-center">
+                                    </div>
+                                    <div class="flex-1 overflow-hidden">
+                                        <h5 class="font-size-16 mb-1">Paul</h5>
+                                        <p class="text-truncate mb-0">Hey! there I'm available</p>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
+                            </a>
+                        </li>
+                        <li class="inbox-list-item">
+                            <a href="javascript: void(0);">
+                                <div class="d-flex align-items-start">
+                                    <div class="me-3 align-self-center">
+                                    </div>
+                                    <div class="flex-1 overflow-hidden">
+                                        <h5 class="font-size-16 mb-1">Mary</h5>
+                                        <p class="text-truncate mb-0">This theme is awesome!</p>
+                                    </div>
+
+                                </div>
+                            </a>
+                        </li>
+                        <li class="inbox-list-item">
+                            <a href="javascript: void(0);">
+                                <div class="d-flex align-items-start">
+                                    <div class="me-3 align-self-center">
+                                    </div>
+                                    <div class="flex-1 overflow-hidden">
+                                        <h5 class="font-size-16 mb-1">Cynthia</h5>
+                                        <p class="text-truncate mb-0">Nice to meet you</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="inbox-list-item">
+                            <a href="javascript: void(0);">
+                                <div class="d-flex align-items-start">
+                                    <div class="me-3 align-self-center">
+                                    </div>
+                                    <div class="flex-1 overflow-hidden">
+                                        <h5 class="font-size-16 mb-1">Darren</h5>
+                                        <p class="text-truncate mb-0">I've finished it! See you so</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
