@@ -15,7 +15,7 @@ class C_Preguntas extends CI_Controller {
 	}
 	
     public function Guardarpregunta(){
-		print_r($this->input->post());
+		//print_r($this->input->post());
 		$res = $this->input->post('outer-group');
 		print_r($res [0]['inner-group']);	
 		$pregunta = array(
