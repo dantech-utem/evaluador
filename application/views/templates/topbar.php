@@ -2,7 +2,7 @@
     <div class="navbar-header">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img src="../../../assets/images/logo.png" height="100">
+            <img src="<?php echo base_url(); ?>assets/images/logo.png" height="100">
             </a>
             <div class="float-end">
                 <div class="dropdown d-inline-block">
