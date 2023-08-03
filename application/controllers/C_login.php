@@ -35,35 +35,40 @@ class C_login extends CI_Controller {
     
 
 //FUNCIONES
-	public function iniciarSesion() {
-		$correo = $this->input->post('Usuario');
-        $contraseña = $this->input->post('Contraseña');
+public function iniciarSesion() {
+    $correo = $this->input->post('Usuario');
+    $contraseña = $this->input->post('Contraseña');
 
-        $user = $this->M_login->obtenerUsuario($correo, $contraseña);
+    // Modificar el modelo M_login para incluir el filtro del estado del usuario
+    $user = $this->M_login->obtenerUsuario($correo, $contraseña);
 
-        if ($user) {
+    if ($user) {
+        // Verificar el estado del usuario antes de permitir el inicio de sesión
+        if ($user->estado == 0) {
+            $data['error'] = 'No puedes iniciar sesión porque tu estado es 0';
+            $this->load->view('Login/login', $data);
+        } else {
             $this->session->set_userdata('id_perfil', $user->id_perfil);
-			$this->session->set_userdata('nombre_usuario', $user->nombre);
+            $this->session->set_userdata('nombre_usuario', $user->nombre);
 
             if ($user->id_perfil == '1') {
-				$datos["title_meta"] = "Admin";
-				$this->load->view('templates/header',$datos);
-				$this->load->view('Admin/InicioA');
-				$this->load->view('templates/footer');
-                
+                $datos["title_meta"] = "Admin";
+                $this->load->view('templates/header',$datos);
+                $this->load->view('Admin/InicioA');
+                $this->load->view('templates/footer');             
             } else {
-				$datos["title_meta"] = "Alumno";
-				$this->load->view('templates/header',$datos);
-				$this->load->view('Alumno/InicioU');
-				$this->load->view('templates/footer');
-                
+                $datos["title_meta"] = "Alumno";
+                $this->load->view('templates/header',$datos);
+                $this->load->view('Alumno/InicioU');
+                $this->load->view('templates/footer');             
             }
         }
-            else {
-            $data['error'] = 'Usuario o contraseña incorrectos ';
-       		$this->load->view('Login/login', $data);
-            }
-        }
+    } else {
+        $data['error'] = 'Usuario o contraseña incorrectos';
+        $this->load->view('Login/login', $data);
+    }
+}
+
     
 
     public function enviarCorreo(){
