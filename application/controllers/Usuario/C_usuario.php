@@ -19,6 +19,14 @@ class C_usuario extends CI_Controller {
 	 * @see https://codeigniter.com/userguide3/general/urls.html
 	 */
 
+	 	 public function __construct(){
+		parent::__construct();
+
+		$this->load->model('M_examen');
+		
+	}
+
+
 	public function InicioU()
 	{
 		$datos["title_meta"] = "Alumno";
@@ -30,8 +38,9 @@ class C_usuario extends CI_Controller {
 	public function R_examen()
 	{
 		$datos["title_meta"] = "Resultado";
+		$data['calificaciones']=$this->M_examen->obtenerCalificacion();
 		$this->load->view('templates/header',$datos);
-		$this->load->view('Alumno/R_examen');
+		$this->load->view('Alumno/R_examen', $data);
 		$this->load->view('templates/footer');
 	}
 

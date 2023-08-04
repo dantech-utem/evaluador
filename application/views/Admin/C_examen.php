@@ -1,10 +1,3 @@
-<!--
-    todo
-    validar al menos 1 pregunta este seleccionada
-
-    stand by
-    guardado de archivo
- -->
 <div class="page-content">
     <div class="row">
         <div class="">

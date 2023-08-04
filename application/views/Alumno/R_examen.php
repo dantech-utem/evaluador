@@ -2,54 +2,44 @@
 <div class="col-md-12">
         <div class="card">
             <div class="card-body rounded-0">
-                <h1 class="d-flex justify-content-center">Calificaciones</h1>
+                <h1 class="d-flex justify-content-center">Calificaciones <br></h1>
             </div>
         </div>
     </div>
-<div class="row">
-    <div class="col-lg-12">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">Captions</h4>
-                <p class="card-title-desc">A <code>&lt;caption&gt;</code> functions like a heading for a table. It helps users with screen readers to find a table and understand what it’s about and decide if they want to read it.</p>
-
-                <div class="table-responsive">
-                    <table class="table table-lg mb-0">
-                        <caption>List of exams and grades</caption>
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Exam Name</th>
-                                <th>Grade</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Financiera Fiscal</td>
-                                <td>90</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Seguridad Social</td>
-                                <td>85</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Informarica</td>
-                                <td>95</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Examen Practico</td>
-                                <td>95</td>
-                            </tr>
-                        </tbody>
-                    </table>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <center>
+                    <h4 class="card-title">Lista de Exámenes y Calificaciones</h4>
+                    </center>
+                    <p class="card-title-desc">A continuación, se muestra una tabla que contiene los exámenes realizados y sus calificaciones correspondientes obtenidas por el usuario.</p>
+                    <div class="table-responsive">
+                        <table class="table table-lg mb-0">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Nombre del Examen</th>
+                                    <th>Calificación</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($calificaciones as $calificacion): ?>
+                                    <tr>
+                                        <th scope="row"><?php echo $calificacion->id_examenes; ?></th>
+                                        <td><?php echo $calificacion->examen; ?></td>
+                                        <td pattern=""><?php echo $calificacion->calificacionfinal; ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-
             </div>
         </div>
+    </div>
+</div>
+
     </div>
 </div>
 

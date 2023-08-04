@@ -1,8 +1,3 @@
-<!-- 
-  todo
-  vistas de base de datos 
--->
-
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
@@ -36,9 +31,6 @@ class M_examen extends CI_Model{
   }
 
     public function actualizar_estatus($id_examenes, $estatus) {
-      //$this->db->where('id_examenes', $id_examenes);
-      //$this->db->update('examenes', array('estatus' => $estatus));
-
       $this->db->set('estatus',$estatus);
 		  $this->db->where('id_examenes', $id_examenes);
 		  $this->db->update('examenes');
@@ -51,6 +43,15 @@ class M_examen extends CI_Model{
               ->where('id_examenes',$id)
               ->get()
               ->row();
+    }
+
+    public function obtenerCalificacion($id){
+        return $this->db->select('*')
+        ->from('vista_califinal')
+        ->where('id_usuarios',$id)
+
+        ->get()
+        ->result();
     }
 }
 ?>
