@@ -7,6 +7,8 @@ class C_login extends CI_Controller {
 		parent::__construct();
 		$this->load->model('M_login');
 		$this->load->library("phpmailer_lib");
+        $this->load->model('M_agregarUsuarios');
+        
 
 	}
 //VISTAS
@@ -35,40 +37,38 @@ class C_login extends CI_Controller {
     
 
 //FUNCIONES
-public function iniciarSesion() {
-    $correo = $this->input->post('Usuario');
-    $contraseña = $this->input->post('Contraseña');
+	public function iniciarSesion() {
+		$correo = $this->input->post('Usuario');
+        $contraseña = $this->input->post('Contraseña');
 
-    // Modificar el modelo M_login para incluir el filtro del estado del usuario
-    $user = $this->M_login->obtenerUsuario($correo, $contraseña);
+        $user = $this->M_login->obtenerUsuario($correo, $contraseña);
 
-    if ($user) {
-        // Verificar el estado del usuario antes de permitir el inicio de sesión
-        if ($user->estado == 0) {
-            $data['error'] = 'No puedes iniciar sesión porque tu estado es 0';
-            $this->load->view('Login/login', $data);
-        } else {
+        if ($user) {
             $this->session->set_userdata('id_perfil', $user->id_perfil);
-            $this->session->set_userdata('nombre_usuario', $user->nombre);
+			$this->session->set_userdata('nombre_usuario', $user->nombre);
+            $this->session->set_userdata('correo', $user->correo_electronico);
+            $this->session->set_userdata('contrasena', $user->contraseña);
+            
 
             if ($user->id_perfil == '1') {
-                $datos["title_meta"] = "Admin";
-                $this->load->view('templates/header',$datos);
-                $this->load->view('Admin/InicioA');
-                $this->load->view('templates/footer');             
+				$datos["title_meta"] = "Admin";
+				$this->load->view('templates/header',$datos);
+				$this->load->view('Admin/InicioA');
+				$this->load->view('templates/footer');
+                
             } else {
-                $datos["title_meta"] = "Alumno";
-                $this->load->view('templates/header',$datos);
-                $this->load->view('Alumno/InicioU');
-                $this->load->view('templates/footer');             
+				$datos["title_meta"] = "Alumno";
+				$this->load->view('templates/header',$datos);
+				$this->load->view('Alumno/InicioU');
+				$this->load->view('templates/footer');
+                
             }
         }
-    } else {
-        $data['error'] = 'Usuario o contraseña incorrectos';
-        $this->load->view('Login/login', $data);
-    }
-}
-
+            else {
+            $data['error'] = 'Usuario o contraseña incorrectos ';
+       		$this->load->view('Login/login', $data);
+            }
+        }
     
 
     public function enviarCorreo(){
@@ -108,7 +108,8 @@ public function iniciarSesion() {
 			}
         } else {
             //el correo electrónico no existe en la base de datos
-            echo 'Correo no encontrado en la base de datos';
+            $data['failed'] = "Correo no encontrado.";
+       		$this->load->view('Login/recuperar', $data);
 			
         }
     }
@@ -133,7 +134,7 @@ public function iniciarSesion() {
              $this->M_login->guardarNuevaContrasena($user['id_usuarios'], $contrasena);
 
                 // Puedes mostrar un mensaje de éxito o redireccionar a una página de éxito.
-            $data['success'] = "Contraseña actualiza correctamente.";
+            $data['success'] = "Contraseña actualizada correctamente.";
             $this->load->view('Login/login', $data);
             }
         } else {
@@ -144,6 +145,36 @@ public function iniciarSesion() {
             
         }
     }
+    public function editarContrasena() {
+        $id_usuario = $this->input->post('id_usuarios');
+        $contrasena = $this->input->post('contrasena');
+        $confirmar_contrasena = $this->input->post('confirmar_contrasena');
+
+        // Verificar si las contraseñas coinciden.
+        if ($contrasena === $confirmar_contrasena) {
+            
+             $this->M_login->editarContrasena($id_usuario,$contrasena);
+
+           
+             
+             $datos["title_meta"] = "Vista Resultados";
+             $this->load->view('templates/header',$datos);
+             $data['usuarios'] = $this->M_agregarUsuarios->obtenerUsuarios();
+             $this->load->view('Admin/R_contrasena',$data);
+             $this->load->view('templates/footer');
+             
+            
+        } else {
+            
+        	$datos["title_meta"] = "Vista Resultados";
+		$this->load->view('templates/header',$datos);
+		$data['usuarios'] = $this->M_agregarUsuarios->obtenerUsuarios();
+		$this->load->view('Admin/R_contrasena',$data);
+		$this->load->view('templates/footer');
+            
+        }
+    }
+    
 		
 
 

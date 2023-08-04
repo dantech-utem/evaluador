@@ -9,6 +9,7 @@
                         </div>
                     </div>
                 </div>
+                
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-body rounded-0">
@@ -38,11 +39,11 @@
                         <h1 class="d-flex justify-content-center">Datos Personales</h1>
                         <div class="mb-2">
                             <label class="form-label">Nombre:</label>
-                            <label class="form-label">Ejemplo de nombre</label>
+                            <label class="form-label"><?php echo $this->session->userdata('nombre_usuario'); ?></label>
                         </div>
                         <div class="mb-2">
                             <label class="form-label">Correo Electronico:</label>
-                            <label class="form-label">Ejemplo del Correo Electronico</label>
+                            <label class="form-label"><?php echo $this->session->userdata('correo'); ?></label>
                         </div>
                         <div class="mb-2">
                             <label class="form-label">Rol:</label>
@@ -59,22 +60,22 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="card  mt-4">
                     <div class="card-body rounded-0">
                         <h1 class="d-flex justify-content-center">Credencial</h1>
                         <div class="mb-2">
                             <label class="form-label">Usuario:</label>
-                            <label class="form-label">Ejemplo del Usuario</label>
+                            <label class="form-label"><?php echo $this->session->userdata('nombre_usuario'); ?></label>
                         </div>
                         <div class="mb-2">
                             <label class="form-label">Clave:</label>
-                            <label class="form-label">Ejemplo de la clave</label>
+                            <label class="form-label">*****</label>
                         </div>
                         <div class="row">
                             <center>
                                 <div class="col-md-2">
-                                    <button class="btn btn-primary w-100 waves-effect waves-light " type="button"
-                                        data-bs-toggle="modal" data-bs-target="#exampleModal">Cambiar Clave</button>
+                                    <button class="btn btn-primary w-100 waves-effect waves-light " type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Cambiar Clave</button>
                                 </div>
                             </center>
                         </div>
