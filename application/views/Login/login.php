@@ -4,11 +4,6 @@
 <link href="<?php echo base_url(); ?>assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css"
     rel="stylesheet" />
 
-<?php if (isset($error) && !empty($error)): ?>
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <?php echo $error; ?>
-    </div>
-<?php endif; ?>
 
 <body>
     <div class="account-pages my-5 pt-sm-5">
@@ -20,7 +15,7 @@
                             <div class="bg-login-overlay"></div>
                             <div class="position-relative">
                                 <div>
-                                    <img src="../../assets/images/logo.png" height="100">
+                                    <img src="<?php echo base_url(); ?>assets/images/logo.png" height="100">
                                 </div>
                                 <h5 class="text-white font-size-20">Bienvenido!</h5>
                                 <p class="text-white-50 mb-0">Inicia sesion para continuar.</p>
@@ -33,9 +28,9 @@
                                     <center>
                                         <div class="error">
                                             <?php if (isset($error)) { ?>
-                                                <p style="align-items: center;">
+                                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                                     <?php echo $error; ?>
-                                                </p>
+                                                </div>
                                             <?php } ?>
                                         </div>
                                     </center>

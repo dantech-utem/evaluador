@@ -7,6 +7,8 @@ class C_login extends CI_Controller {
 		parent::__construct();
 		$this->load->model('M_login');
 		$this->load->library("phpmailer_lib");
+        $this->load->model('M_agregarUsuarios');
+        
 
 	}
 //VISTAS
@@ -44,7 +46,11 @@ class C_login extends CI_Controller {
         if ($user) {
             $this->session->set_userdata('id_perfil', $user->id_perfil);
 			$this->session->set_userdata('nombre_usuario', $user->nombre);
+            
             $this->session->set_userdata('id_usuario', $user->id_usuarios);
+            $this->session->set_userdata('correo', $user->correo_electronico);
+            $this->session->set_userdata('contrasena', $user->contraseña);
+            
 
             if ($user->id_perfil == '1') {
 				$datos["title_meta"] = "Admin";
@@ -104,7 +110,8 @@ class C_login extends CI_Controller {
 			}
         } else {
             //el correo electrónico no existe en la base de datos
-            echo 'Correo no encontrado en la base de datos';
+            $data['failed'] = "Correo no encontrado.";
+       		$this->load->view('Login/recuperar', $data);
 			
         }
     }
@@ -129,7 +136,7 @@ class C_login extends CI_Controller {
              $this->M_login->guardarNuevaContrasena($user['id_usuarios'], $contrasena);
 
                 // Puedes mostrar un mensaje de éxito o redireccionar a una página de éxito.
-            $data['success'] = "Contraseña actualiza correctamente.";
+            $data['success'] = "Contraseña actualizada correctamente.";
             $this->load->view('Login/login', $data);
             }
         } else {
@@ -140,6 +147,36 @@ class C_login extends CI_Controller {
             
         }
     }
+    public function editarContrasena() {
+        $id_usuario = $this->input->post('id_usuarios');
+        $contrasena = $this->input->post('contrasena');
+        $confirmar_contrasena = $this->input->post('confirmar_contrasena');
+
+        // Verificar si las contraseñas coinciden.
+        if ($contrasena === $confirmar_contrasena) {
+            
+             $this->M_login->editarContrasena($id_usuario,$contrasena);
+
+           
+             
+             $datos["title_meta"] = "Vista Resultados";
+             $this->load->view('templates/header',$datos);
+             $data['usuarios'] = $this->M_agregarUsuarios->obtenerUsuarios();
+             $this->load->view('Admin/R_contrasena',$data);
+             $this->load->view('templates/footer');
+             
+            
+        } else {
+            
+        	$datos["title_meta"] = "Vista Resultados";
+		$this->load->view('templates/header',$datos);
+		$data['usuarios'] = $this->M_agregarUsuarios->obtenerUsuarios();
+		$this->load->view('Admin/R_contrasena',$data);
+		$this->load->view('templates/footer');
+            
+        }
+    }
+    
 		
 
 
