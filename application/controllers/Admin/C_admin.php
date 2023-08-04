@@ -9,7 +9,8 @@ class C_admin extends CI_Controller {
 		$this->load->model('M_examen');
 		$this->load->model('M_preguntas');
 		$this->load->model('M_login');
-		$this->load->model('M_usuarios');		
+		$this->load->model('M_usuarios');
+		$this->load->helper('url', 'form');
     }
 
 	public function InicioA()
@@ -113,7 +114,39 @@ class C_admin extends CI_Controller {
 			$registro=array('examen_id'=>$examen_id, 'pregunta_id'=>$key);
 			$this->M_examen->insertarPreguntasExamenes($registro);	
 		}
-    	redirect('Admin/C_admin/C_examen');
+
+			$config['upload_path'] = './assets/images/examenes';
+            $config['allowed_types'] = 'jpg|png';
+            $config['max_size'] = 2000;
+            $config['max_width'] = 1500;
+            $config['max_height'] = 1500;
+    
+            $this->load->library('upload', $config);
+    
+            if ($this->upload->do_upload('imagen_examen')) {
+                // El archivo se cargó correctamente
+                $upload_data = $this->upload->data();
+                $imagen_examen = $upload_data['file_name'];
+    
+                // Llamamos al modelo para agregar el usuario, pasando el nombre de la foto ya obtenido.
+               
+				$this->M_examen->insertarImagenExamen($imagen_examen);	
+                
+    
+                // Redireccionar o mostrar mensaje de éxito
+                $this->O_examen();
+            } else {
+                // Error en la carga del archivo
+               
+                $data['error'] = "Por favor suba una imagen.";
+                $datos["title_meta"] = "Crear Usuario";
+                $this->load->view('templates/header', $datos);
+                $this->load->view('Admin/C_examen', $data);
+                $this->load->view('templates/footer');
+            }
+
+
+    	redirect('Admin/C_admin/O_examen');
 	}
 
 	public function C_examen()

@@ -27,7 +27,14 @@ class M_examen extends CI_Model{
   }
 
   public function insertarPreguntasExamenes($registro){
-    $this->db->insert('examenpreguntas', $registro);
+      $this->db->insert('examenpreguntas', $registro);
+  }
+
+  public function insertarImagenExamen(){
+    $data = array(
+      "imagen_examen"=>$imagen_examen
+    );
+      $this->db->insert('examenes', $data);
   }
 
     public function actualizar_estatus($id_examenes, $estatus) {
