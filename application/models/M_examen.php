@@ -49,5 +49,19 @@ class M_examen extends CI_Model{
               ->get()
               ->row();
     }
+
+    public function obtenerCalificacion($id){
+        return $this->db->select('*')
+        ->from('vista_califinal')
+        ->where('id_usuarios',$id)
+
+        ->get()
+        ->result();
+
+
+      //$query = $this->db->get('vista_califinal');
+      //return $query->result();
+      
+    }
 }
 ?>

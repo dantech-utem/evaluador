@@ -2,7 +2,7 @@
 <div class="col-md-12">
         <div class="card">
             <div class="card-body rounded-0">
-                <h1 class="d-flex justify-content-center">Calificaciones</h1>
+                <h1 class="d-flex justify-content-center">Calificaciones <br></h1>
             </div>
         </div>
     </div>
@@ -17,36 +17,24 @@
 
                     <div class="table-responsive">
                         <table class="table table-lg mb-0">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Nombre del Examen</th>
-                                    <th>Calificación</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Financiera Fiscal</td>
-                                    <td>90</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Seguridad Social</td>
-                                    <td>85</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Informática</td>
-                                    <td>95</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">4</th>
-                                    <td>Examen Práctico</td>
-                                    <td>95</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Nombre del Examen</th>
+                                        <th>Calificación</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                            <?php foreach ($calificaciones as $calificacion): ?>
+
+                                    <tr>
+                                        <th scope="row"><?php echo $calificacion->id_examenes; ?></th>
+                                        <td><?php echo $calificacion->examen; ?></td>
+                                        <td pattern=""><?php echo $calificacion->calificacionfinal; ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </table>
+                        </tbody>
                     </div>
                 </div>
             </div>

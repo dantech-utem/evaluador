@@ -24,17 +24,19 @@
                             </tr>
                         </thead>
                         <tbody>
+                        <?php foreach ($usuarios as $usuario): ?>
                             <tr>
-                                <td>1</td>
+                                <td><?php echo $usuario->id_usuarios; ?></td>
                                 <td>
-                                    <img src="" alt="Foto"> Alumno
+                                    <img src="" alt="Foto"> <br>
+                                    <?php echo $usuario->nombre; ?>
                                 </td>
                                 <td>
-                                    <button class="btn btn-sm btn-primary" type="button"
-                                        data-bs-toggle="modal" data-bs-target="#exampleModal2">Mostrar Calificaciones</button>
+                                    <a href="<?php echo site_url() . "/Admin/C_admin/R_examenAdmin/" . $usuario->id_usuarios ?>" class="btn btn-sm btn-primary">Mostrar Calificaciones</a>
                                 </td>
                             </tr>
                             <!-- Agrega más filas de la tabla aquí -->
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>

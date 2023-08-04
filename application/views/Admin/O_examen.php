@@ -32,7 +32,7 @@
                         <tbody>
                             <?php foreach ($examenes as $examen): ?>
                                 <tr>
-                                    <td>1</td>
+                                    <td><?php echo $examen->id_examenes; ?></td>
                                     <td>
                                         <?php echo $examen->titulo; ?>
                                     </td>
@@ -43,8 +43,7 @@
                                     </td>
                                     <td>
                                         <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox"
-                                                id="<?php echo $examen->id_examenes; ?>" <?php echo ($examen->estatus > 0) ? 'checked' : ''; ?> onClick="cambiarEstatus(this)">
+                                            <input class="form-check-input" type="checkbox" id="<?php echo $examen->id_examenes; ?>" <?php echo ($examen->estatus > 0) ? 'checked' : ''; ?> onClick="cambiarEstatus(this)">
                                             <label class="form-check-label" for="<?php echo $examen->id_examenes; ?>"><?php echo ($examen->estatus > 0) ? 'Activo' : 'Inactivo'; ?></label>
                                         </div>
                                     </td>

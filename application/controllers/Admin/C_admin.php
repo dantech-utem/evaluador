@@ -9,6 +9,8 @@ class C_admin extends CI_Controller {
 		$this->load->model('M_examen');
 		$this->load->model('M_preguntas');
 		$this->load->model('M_login');
+		$this->load->model('M_usuarios');
+		
 	}
 
 	public function InicioA()
@@ -160,8 +162,9 @@ class C_admin extends CI_Controller {
 	public function Cn_resultados()
 	{
 		$datos["title_meta"] = "Vista Resultados";
+		$data['usuarios']=$this->M_usuarios->obtenerUsuarios();
 		$this->load->view('templates/header',$datos);
-		$this->load->view('Admin/Cn_resultados');
+		$this->load->view('Admin/Cn_resultados', $data);
 		$this->load->view('templates/footer');
 	}
 
@@ -173,4 +176,19 @@ class C_admin extends CI_Controller {
 		$this->load->view('templates/footer');
 	}
 
+	public function R_examenUsuario(){
+		$datos["title_meta"] = "Resultado de examen";
+		$data['calificaciones']=$this->M_examen->obtenerCalificacion($this->session->userdata('id_usuario'));
+		$this->load->view('templates/header',$datos);
+		$this->load->view('Alumno/R_examen', $data);
+		$this->load->view('templates/footer');
+	}
+
+	public function R_examenAdmin($id_usuario){
+		$datos["title_meta"] = "Resultado de examen";
+		$data['calificaciones']=$this->M_examen->obtenerCalificacion($id_usuario);
+		$this->load->view('templates/header',$datos);
+		$this->load->view('Alumno/R_examen', $data);
+		$this->load->view('templates/footer');
+	}
 }

@@ -44,6 +44,7 @@ class C_login extends CI_Controller {
         if ($user) {
             $this->session->set_userdata('id_perfil', $user->id_perfil);
 			$this->session->set_userdata('nombre_usuario', $user->nombre);
+            $this->session->set_userdata('id_usuario', $user->id_usuarios);
 
             if ($user->id_perfil == '1') {
 				$datos["title_meta"] = "Admin";
