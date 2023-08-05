@@ -100,52 +100,62 @@ class C_admin extends CI_Controller {
 	}
 
 	
+	public function updateExamen($id){
+		$titulo = $this->input->post('examen');
+		$config['upload_path'] = './assets/images/examenes';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = 2000;
+        $config['max_width'] = 1500;
+        $config['max_height'] = 1500;
+		$this->load->library('upload', $config);
+
+		if ($this->upload->do_upload('imagen_examen')) {
+			$upload_data = $this->upload->data();
+            $imagen_examen = $upload_data['file_name'];
+
+			$this->M_examen->cambiar_foto($id_usuario,$imagen_examen);
+		} 
+        $data = array(
+            'titulo' => $titulo
+        );
+        $this->db->where('id_examenes', $id);
+        $this->db->update('examenes', $data);
+		$this->M_examen->borrarPreguntasExamenes($id);
+		foreach($this->input->post('preguntas') as $key=>$pregunta){
+			$registro=array('examen_id'=>$id, 'pregunta_id'=>$key);
+			$this->M_examen->insertarPreguntasExamenes($registro);	
+		}
+		        redirect('Admin/C_admin/editExamen/'.$id);
+	}
 	
+
+
 	public function storeExamen(){
 		$titulo = $this->input->post('examen');
-    	$data = array(
-			'titulo' => $titulo
-    	);
-    	$this->db->insert('examenes', $data);
-		if( $this->db->affected_rows() > 0 ) {
-			$examen_id = $this->db->insert_id();
-		}
+		$config['upload_path'] = './assets/images/examenes';
+        $config['allowed_types'] = 'jpg|png';
+        $config['max_size'] = 2000;
+        $config['max_width'] = 1500;
+        $config['max_height'] = 1500;
+        $this->load->library('upload', $config);
+        if ($this->upload->do_upload('imagen_examen')) {
+            // El archivo se cargó correctamente
+            $upload_data = $this->upload->data();
+            $imagen_examen = $upload_data['file_name'];
+            // Llamamos al modelo para agregar el usuario, pasando el nombre de la foto ya obtenido.
+			$data = array(
+				'titulo' => $titulo,
+				'imagen_examen'=>$imagen_examen
+			);
+			$this->db->insert('examenes', $data);
+			if( $this->db->affected_rows() > 0 ) {
+				$examen_id = $this->db->insert_id();
+			}
+        } 
 		foreach($this->input->post('preguntas') as $key=>$pregunta){
 			$registro=array('examen_id'=>$examen_id, 'pregunta_id'=>$key);
 			$this->M_examen->insertarPreguntasExamenes($registro);	
 		}
-
-			$config['upload_path'] = './assets/images/examenes';
-            $config['allowed_types'] = 'jpg|png';
-            $config['max_size'] = 2000;
-            $config['max_width'] = 1500;
-            $config['max_height'] = 1500;
-    
-            $this->load->library('upload', $config);
-    
-            if ($this->upload->do_upload('imagen_examen')) {
-                // El archivo se cargó correctamente
-                $upload_data = $this->upload->data();
-                $imagen_examen = $upload_data['file_name'];
-    
-                // Llamamos al modelo para agregar el usuario, pasando el nombre de la foto ya obtenido.
-               
-				$this->M_examen->insertarImagenExamen($imagen_examen);	
-                
-    
-                // Redireccionar o mostrar mensaje de éxito
-                $this->O_examen();
-            } else {
-                // Error en la carga del archivo
-               
-                $data['error'] = "Por favor suba una imagen.";
-                $datos["title_meta"] = "Crear Usuario";
-                $this->load->view('templates/header', $datos);
-                $this->load->view('Admin/C_examen', $data);
-                $this->load->view('templates/footer');
-            }
-
-
     	redirect('Admin/C_admin/O_examen');
 	}
 
@@ -167,22 +177,6 @@ class C_admin extends CI_Controller {
         $this->load->view('Admin/C_examen', $datos);
         $this->load->view('templates/footer');
 	}
-
-	public function updateExamen($id){
-		$titulo = $this->input->post('examen');
-        $data = array(
-            'titulo' => $titulo
-        );
-        $this->db->where('id_examenes', $id);
-        $this->db->update('examenes', $data);
-		$this->M_examen->borrarPreguntasExamenes($id);
-		foreach($this->input->post('preguntas') as $key=>$pregunta){
-			$registro=array('examen_id'=>$id, 'pregunta_id'=>$key);
-			$this->M_examen->insertarPreguntasExamenes($registro);	
-		}
-		        redirect('Admin/C_admin/editExamen/'.$id);
-	}
-
 
 	public function C_Usuario()
 	{

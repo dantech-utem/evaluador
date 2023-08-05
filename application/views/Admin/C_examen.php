@@ -25,10 +25,15 @@
                                             <div class="row">
                                                 <input class="form-control" type="text" name="examen" id="examen" value="<?php echo isset($examen) ? ''.$examen->titulo : ''; ?>" required>
                                             </div>
-                                            <div class="col-md-3">
-                                                <img id="uploadPreview1" width="row" height="row"  src="img.jpg "/>
-                                            </div>  
+                                            <div class="row">
+                                                <center>
+                                                <div class="cold-md-7">
+                                                    <img id="uploadPreview1" width="75%" height="75%"  src="<?php echo isset($examen) ? base_url().'/assets/images/examenes/'.$examen->imagen_examen : ''; ?>"/>
+                                                </div>
+                                                </center>   
+                                            </div> 
                                         </div>
+                                        </form> 
                                         <div class="col-md-5">
                                             <div class="card">
                                                 <div class="card-body">
@@ -98,7 +103,7 @@
                                         </div>
                                     </div>
                                                                             
-                                </form>
+                                
                             </div>
                         </div>
                     </div>
