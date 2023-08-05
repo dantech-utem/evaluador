@@ -6,8 +6,9 @@
     </div>
 
     <div class="card-body pt-5">    
-    <form method="post" action="<?php echo site_url(); ?>/Admin/C_agregarUsuario/asignarExamen/<?php echo $id_usuarios ?>">
-    
+    <form method="post" action="<?php echo ($usuario).site_url('Admin/C_agregarUsuario/asignarExamen'); ?>">
+    <input type="hidden" name="id_usuario" value="<?php echo isset($usuario['id_usuarios']) ? $usuario['id_usuarios'] : ''; ?>">
+
             <div class="mb-3">
                 <label class="form-label">Examenes</label>
                 <div class="row">

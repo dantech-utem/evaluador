@@ -11,6 +11,7 @@ class C_admin extends CI_Controller {
 		$this->load->model('M_login');
 		$this->load->model('M_usuarios');
 		$this->load->model('M_agregarUsuarios');
+		$this->load->model('M_editarUsuarios');
 	}
 
 	public function InicioA()
@@ -131,8 +132,8 @@ class C_admin extends CI_Controller {
 	{
 		$datos["title_meta"] = "Vista Resultados";
 		$this->load->view('templates/header',$datos);
-		$data['usuarios'] = $this->M_agregarUsuarios->obtenerUsuarios();
-		$this->load->view('Admin/R_contrasena',$data);
+	
+		$this->load->view('Admin/R_contrasena');
 		$this->load->view('templates/footer');
 	}
 

@@ -2,6 +2,7 @@
     <div class="navbar-header">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
+                
             <img src="<?php echo base_url(); ?>assets/images/logo.png" height="100">
             </a>
             <div class="float-end">
@@ -9,7 +10,7 @@
                     <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img class="rounded-circle header-profile-user"
-                            src="<?php echo base_url(); ?>assets/images/users/avatar-2.jpg" alt="Header Avatar">
+                            src="<?php echo base_url('assets/images/users/'.$this->session->userdata('foto_perfil'))?>" alt="Header Avatar">
                         <span class="d-none d-xl-inline-block ms-1">
                             <?php echo $this->session->userdata('nombre_usuario'); ?>
                         </span>

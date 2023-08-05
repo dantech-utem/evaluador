@@ -11,7 +11,7 @@
                     </div>
     <div class="card-body pt-5">
         <div class="p-2">
-            <form class="form-horizontal" action="<?php echo isset($usuario) ? site_url('Admin/C_agregarUsuario/editarUsuario') : site_url('Admin/C_agregarUsuario/agregarUsuario'); ?>"" method="post" enctype="multipart/form-data">
+            <form class="form-horizontal" action="<?php echo isset($usuario) ? site_url('Admin/C_agregarUsuario/editarUsuario') : site_url('Admin/C_agregarUsuario/agregarUsuario'); ?>" method="post" enctype="multipart/form-data">
             <input type="hidden" name="id_usuario" value="<?php echo isset($usuario['id_usuarios']) ? $usuario['id_usuarios'] : ''; ?>">
             <div class="row mb-3">
                     <div class="col-md-6">

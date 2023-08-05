@@ -117,9 +117,23 @@ public function obtenerUsuario($correo, $contraseña) {
             $this->db->insert('usuariosexamen', $data);
         }
     }
+    public function actualizar_contrasena($id_usuario,$contrasena)
+    {
+        $data = array(
+            'contraseña' =>$contrasena
+        );
 
+        $this->db->where('id_usuarios', $id_usuario);
+        $this->db->update('usuarios', $data);
+    }
+    public function cambiar_foto($id_usuario,$foto_perfil) {
 
-    
+        $data = array(
+            "foto_perfil"=>$foto_perfil
+        );
 
+        $this->db->where('id_usuarios', $id_usuario);
+        $this->db->update('usuarios', $data);
+    }
 }
 ?>

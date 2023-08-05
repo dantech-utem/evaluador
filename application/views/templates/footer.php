@@ -1,58 +1,8 @@
 <footer class="footer">
 
-    <!-- Modal para cambiar contraseña -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Cambiar Contraseña</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form method="post" action="<?php echo site_url().'/C_login/editarContrasena/';?>">
-                    <div class="modal-body">
-                        <!-- Formulario para ingresar nueva contraseña -->
-                        <input type="hidden" name="id_usuarios" id="id_usuarios">
+    
 
-                        <div class="col-md-6">
-                            <div class="mb-2">
-                                <input type="text" class="form-control" placeholder="Nueva contraseña" name="contrasena">
-                            </div>
-                            <div class="mb-2">
-                                <input type="text" class="form-control" placeholder="Vuelve a escribir la contraseña"name="confirmar_contrasena">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Actualizar</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal para cambiar foto de perfil -->
-    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Cambiar Foto</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <!-- Formulario para subir una nueva foto de perfil -->
-                    <div class="col-md-12">
-                        <form action="#" class="dropzone">
-                            <div class="fallback">
-                                <input name="file" type="file" multiple="multiple">
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="text-sm-end d-none d-sm-block">
-
-                                </div>
-                            </div>
-                    </div>
-                </div>
+   
 </footer>
 </div>
 <!-- end main content-->
