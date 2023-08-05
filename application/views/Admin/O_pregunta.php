@@ -8,7 +8,8 @@
         </div>
     </div>
 
-    <a href="<?php echo site_url() . "/Admin/C_admin/C_pregunta"; ?>" class="waves-effect">Crear Pregunta</a>
+    <a class="btn btn-primary" href="<?php echo site_url() . "/Admin/C_admin/C_pregunta"; ?>" class="waves-effect">Crear
+        Pregunta</a>
 
 
     <div class="row">
@@ -40,10 +41,9 @@
                                                 class="fas fa-edit"></i></i> Editar</a>
                                     </td>
                                     <td>
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault"
-                                                checked>
-                                            <label class="form-check-label" for="flexSwitchCheckDefault"></label>
+                                    <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="<?php echo $preguntas->id_preguntas; ?>" <?php echo ($preguntas->estatus_pregunta > 0) ? 'checked' : ''; ?> onClick="cambiarEstatus(this)">
+                                            <label class="form-check-label" for="<?php echo $preguntas->id_preguntas; ?>"><?php echo ($preguntas->estatus_pregunta > 0) ? 'Activo' : 'Inactivo'; ?></label>
                                         </div>
                                     </td>
                                 </tr>
@@ -55,3 +55,5 @@
             </div>
         </div>
     </div>
+
+    <script src="<?php echo base_url(); ?>assets/js/O_pregunta.js"></script>

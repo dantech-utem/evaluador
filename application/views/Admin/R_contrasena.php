@@ -40,30 +40,6 @@
                     </div>
                 </div>
 
-        <!-- Modal para cambiar foto de perfil -->
-    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Cambiar Foto</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form action="<?= site_url('C_login/cambiar_foto') ?>" method="post" enctype="multipart/form-data">
-                <div class="modal-body">
-                    <div class="col-md-12">
-                        <div class="mb-3">
-                            <input type="file" class="form-control" name="profile_image" enctype="multipart/form-data" id="userphoto">
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Actualizar</button>
-                        </div>
-                    </div>
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
                 <div class="card  mt-4">
                     <div class="card-body rounded-0">
                         <h1 class="d-flex justify-content-center">Datos Personales</h1>
@@ -114,6 +90,7 @@
             </div>
         </div>
     </div>
+
     <!-- Modal para cambiar contraseña -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -125,12 +102,14 @@
                 <form method="post" action="<?= site_url('C_login/cambiar_contrasena') ?>">
                     <div class="modal-body">
                         <!-- Formulario para ingresar nueva contraseña -->
-                        <div class="col-md-6">
-                            <div class="mb-2">
-                                <input type="text" class="form-control" placeholder="Nueva contraseña" name="contrasena">
+                        <div class="col-md-12">
+                        <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1">Contraseña</span>
+                                <input type="text" class="form-control" placeholder="Contraseña" aria-label="Username" name="contrasena" aria-describedby="basic-addon1">
                             </div>
-                            <div class="mb-2">
-                                <input type="text" class="form-control" placeholder="Vuelve a escribir la contraseña"name="confirmar_contrasena">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1">Confirmar Contraseña</span>
+                                <input type="text" class="form-control" placeholder="Confirmar Contraseña" aria-label="Username" name="confirmar_contrasena" aria-describedby="basic-addon1">
                             </div>
                         </div>
                     </div>
@@ -138,6 +117,31 @@
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Actualizar</button>
                     </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para cambiar foto de perfil -->
+    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Cambiar Foto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="<?= site_url('C_login/cambiar_foto') ?>" method="post" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <input type="file" class="form-control" name="profile_image" enctype="multipart/form-data" id="userphoto">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Actualizar</button>
+                        </div>
+                    </div>
+                </div>
                 </form>
             </div>
         </div>
