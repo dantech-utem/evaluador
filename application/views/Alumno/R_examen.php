@@ -25,6 +25,7 @@
                             </thead>
                             <tbody>
                                 <?php foreach ($calificaciones as $calificacion): ?>
+
                                     <tr>
                                         <th scope="row"><?php echo $calificacion->id_examenes; ?></th>
                                         <td><?php echo $calificacion->examen; ?></td>
@@ -33,6 +34,7 @@
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
+
                     </div>
                 </div>
             </div>

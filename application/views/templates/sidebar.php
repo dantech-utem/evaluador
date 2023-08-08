@@ -2,7 +2,8 @@
     <div class="h-100">
         <div class="user-wid text-center py-4">
             <div class="user-img">
-                <i class="fas fa-user avatar-icon" ></i>
+            <img src="<?php echo base_url('assets/images/users/'.$this->session->userdata('foto_perfil'))?>" alt=""
+                                        class="avatar-md mx-auto rounded-circle">
                     
             </div>
             <div class="mt-3">
@@ -36,7 +37,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="<?php echo site_url() . "/Admin/C_admin/R_usuarios"; ?>" class="waves-effect">
+                        <a href="<?php echo site_url() . "/Admin/C_agregarUsuario/O_usuarios"; ?>" class="waves-effect">
                                 <i class="mdi mdi-account-multiple"></i>
                                 <span>Usuarios</span>
                             </a>

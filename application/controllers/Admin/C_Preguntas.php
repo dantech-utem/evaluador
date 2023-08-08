@@ -5,6 +5,7 @@ class C_Preguntas extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->model('M_prototipo');
+		$this->load->model('M_preguntas');
 	}
 
 	public function preguntas() {
@@ -15,7 +16,7 @@ class C_Preguntas extends CI_Controller {
 	}
 	
     public function Guardarpregunta(){
-		print_r($this->input->post());
+		//print_r($this->input->post());
 		$res = $this->input->post('outer-group');
 		print_r($res [0]['inner-group']);	
 		$pregunta = array(
@@ -82,6 +83,18 @@ class C_Preguntas extends CI_Controller {
 			
 		}
 		$this->preguntas();
+	}
+
+	public function actualizar_estatus($id_preguntas, $estatus_pregunta) {
+		$this->M_preguntas->actualizar_estatus($id_preguntas, $estatus_pregunta);
+		//echo $id_examenes, $estatus;
+		if( $this->db->affected_rows() == 0 ){ 
+			$bandera = false;
+		}
+		else {
+			$bandera = true;
+		}
+		echo json_encode($bandera);
 	}
 
 

@@ -4,7 +4,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body rounded-0">
-                    <h1 class="d-flex justify-content-center">Crear Pregunta</h1>
+                <?php echo isset($pregunta) ? '<h1 class="d-flex justify-content-center">Editar Pregunta</h1>' .$pregunta->id_preguntas : '<h1 class="d-flex justify-content-center">Crear Pregunta</h1>';?>
                 </div>
             </div>
             <!-- BOTON PARA CREAR NUEVA PREGUNTA -->

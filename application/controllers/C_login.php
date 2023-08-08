@@ -5,8 +5,11 @@ class C_login extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
+        $this->load->helper('url', 'form');
 		$this->load->model('M_login');
 		$this->load->library("phpmailer_lib");
+        $this->load->model('M_agregarUsuarios');
+        
 
 	}
 //VISTAS
@@ -44,7 +47,12 @@ class C_login extends CI_Controller {
         if ($user) {
             $this->session->set_userdata('id_perfil', $user->id_perfil);
 			$this->session->set_userdata('nombre_usuario', $user->nombre);
+            
             $this->session->set_userdata('id_usuario', $user->id_usuarios);
+            $this->session->set_userdata('correo', $user->correo_electronico);
+            $this->session->set_userdata('contrasena', $user->contraseña);
+            $this->session->set_userdata('foto_perfil', $user->foto_perfil);
+            
 
             if ($user->id_perfil == '1') {
 				$datos["title_meta"] = "Admin";
@@ -104,7 +112,8 @@ class C_login extends CI_Controller {
 			}
         } else {
             //el correo electrónico no existe en la base de datos
-            echo 'Correo no encontrado en la base de datos';
+            $data['failed'] = "Correo no encontrado.";
+       		$this->load->view('Login/recuperar', $data);
 			
         }
     }
@@ -129,7 +138,7 @@ class C_login extends CI_Controller {
              $this->M_login->guardarNuevaContrasena($user['id_usuarios'], $contrasena);
 
                 // Puedes mostrar un mensaje de éxito o redireccionar a una página de éxito.
-            $data['success'] = "Contraseña actualiza correctamente.";
+            $data['success'] = "Contraseña actualizada correctamente.";
             $this->load->view('Login/login', $data);
             }
         } else {
@@ -140,6 +149,83 @@ class C_login extends CI_Controller {
             
         }
     }
+
+    public function cambiar_contrasena(){
+    // Verifica si el formulario fue enviado
+   
+    $contrasena = $this->input->post("contrasena");
+    $confirmar_contrasena = $this->input->post('confirmar_contrasena');
+
+    // Verificar si las contraseñas coinciden.
+    if ($contrasena === $confirmar_contrasena) {     
+
+        $id_usuario=$this->session->userdata('id_usuario');
+
+        $this->M_login->actualizar_contrasena($id_usuario,$contrasena);
+       
+        // Redireccionar o mostrar mensaje de éxito
+        $datos["title_meta"] = "Vista Resultados";
+		$this->load->view('templates/header',$datos);
+		$data['usuarios'] = $this->M_agregarUsuarios->obtenerUsuarios();
+		$this->load->view('Admin/R_contrasena',$data);
+		$this->load->view('templates/footer');
+        
+
+        
+    }
+ else {
+        // Si las contraseñas no coinciden, puedes mostrar un mensaje de error o redireccionar al formulario nuevamente.
+        $data['error'] = "Las contraseñas no coinciden. Intenta de nuevo.";
+        $datos["title_meta"] = "Vista Resultados";
+		$this->load->view('templates/header',$datos);
+		$data['usuarios'] = $this->M_agregarUsuarios->obtenerUsuarios();
+		$this->load->view('Admin/R_contrasena',$data);
+		$this->load->view('templates/footer');
+    }
+    
+   
+}
+public function cambiar_foto() {
+
+        $config['upload_path'] = './assets/images/users';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = 2000;
+        $config['max_width'] = 1500;
+        $config['max_height'] = 1500;
+
+        $this->load->library('upload', $config);
+
+        if ($this->upload->do_upload('profile_image')) {
+            // El archivo se cargó correctamente
+           
+            $upload_data = $this->upload->data();
+            $foto_perfil = $upload_data['file_name'];
+            $id_usuario=$this->session->userdata('id_usuario');
+           
+            // Llamamos al modelo para agregar el usuario, pasando el nombre de la foto ya obtenido.
+           
+            $this->M_login->cambiar_foto($id_usuario,$foto_perfil);
+                            
+                // Redireccionar o mostrar mensaje de éxito
+                $data['error'] = "Al volver a iniciar sesion se reflejaran los cambios.";
+                $datos["title_meta"] = "Vista Resultados";
+                $this->load->view('templates/header',$datos);
+                $data['usuarios'] = $this->M_agregarUsuarios->obtenerUsuarios();
+                $this->load->view('Admin/R_contrasena',$data);
+                $this->load->view('templates/footer');
+
+        } else {
+            // Error en la carga del archivo
+           
+            $data['error'] = "Por favor suba una imagen.";
+            $datos["title_meta"] = "Vista Resultados";
+            $this->load->view('templates/header',$datos);
+            $data['usuarios'] = $this->M_agregarUsuarios->obtenerUsuarios();
+            $this->load->view('Admin/R_contrasena',$data);
+            $this->load->view('templates/footer');
+        }
+}
+    
 		
 
 

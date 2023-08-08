@@ -8,10 +8,8 @@
         </div>
     </div>
 
-    <a class="btn btn-primary" href="<?php echo site_url() . "/Admin/C_admin/C_examen"; ?>" class="waves-effect">Crear Examen</a>.
-
-    <br />
-    <br />
+    <a class="btn btn-primary" href="<?php echo site_url() . "/Admin/C_admin/C_examen"; ?>" class="waves-effect">Crear
+        Examen</a>
 
     <br />
     <br />
