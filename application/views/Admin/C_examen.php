@@ -28,7 +28,7 @@
                                             <div class="row">
                                                 <center>
                                                 <div class="cold-md-7">
-                                                    <img id="uploadPreview1" width="75%" height="75%"  src="<?php echo isset($examen) ? base_url().'/assets/images/examenes/'.$examen->imagen_examen : ''; ?>"/>
+                                                    <img id="uploadPreview1" width="75%" height="75%"  src="<?php echo isset($examen) ? base_url().'/assets/images/examenes'.$examen->imagen_examen : ''; ?>"/>
                                                 </div>
                                                 </center>   
                                             </div> 
