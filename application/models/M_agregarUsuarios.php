@@ -55,12 +55,15 @@ class M_agregarUsuarios extends CI_Model{
         }
     }
     
-    public function asignarExamenesUsuario($id_usuario, $examenes_seleccionados) {
+     
+    public function asignarExamenesUsuario($id_usuarios, $examenes_seleccionados) {
         // Asociar los exámenes seleccionados al usuario en la tabla "usuarios_examenes"
         foreach ($examenes_seleccionados as $examen_id) {
             $data = array(
-                'usuario_id' => $id_usuario,
-                'examen_id' => $examen_id
+                'usuario_id' => $id_usuarios,
+                'examen_id' => $examen_id,
+                'estatus_examen' => 1
+
             );
             
             $this->db->insert('usuariosexamen', $data);

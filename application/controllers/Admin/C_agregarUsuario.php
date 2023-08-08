@@ -186,10 +186,11 @@ class C_agregarUsuario extends CI_Controller {
 		$this->load->view('templates/footer');
 	}
     
-    public function asignarExamen($id_usuarios) {
+    public function asignarExamen() {
        
         $examenes_seleccionados = $this->input->post('examenes');
-    
+        $id_usuarios = $this->input->post('id_usuarios');
+
         // Procesa la asignación de exámenes
         $this->M_agregarUsuarios->asignarExamenesUsuario($id_usuarios, $examenes_seleccionados);
     
