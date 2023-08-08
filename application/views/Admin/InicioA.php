@@ -28,7 +28,7 @@
                             <div class="font-size-16 mt-2">Examenes</div>
                         </div>
                     </div>
-                    <h4 class="mt-4">1,368</h4>
+                    <h4 class="mt-4"><?php echo $conteo_e ?></h4>
                     <div class="row">
                         <div class="col-5 align-self-center">
                         </div>
@@ -48,8 +48,9 @@
                             <div class="font-size-16 mt-2">Usuarios</div>
                         </div>
                     </div>
-                    <h4 class="mt-4">2,456</h4>
+                    <h4 class="mt-4"><?php echo $conteo ?></h4>  
                     <div class="row">
+                   
                         <div class="col-5 align-self-center">
                         </div>
                     </div>
