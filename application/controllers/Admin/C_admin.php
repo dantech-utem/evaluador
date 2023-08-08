@@ -113,10 +113,11 @@ class C_admin extends CI_Controller {
 			$upload_data = $this->upload->data();
             $imagen_examen = $upload_data['file_name'];
 
-			$this->M_examen->cambiar_foto($id_usuario,$imagen_examen);
+			$this->M_examen->cambiar_foto($id_examenes,$imagen_examen);
 		} 
         $data = array(
-            'titulo' => $titulo
+            'titulo' => $titulo,
+			'imagen_examen'=>$imagen_examen
         );
         $this->db->where('id_examenes', $id);
         $this->db->update('examenes', $data);
