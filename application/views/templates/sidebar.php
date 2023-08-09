@@ -69,7 +69,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="<?php echo site_url() . "/Usuario/C_usuario/R_examen"; ?>" class="waves-effect">
+                            <a href="<?php echo site_url() . "/Usuario/C_usuario/R_examenUsuario"; ?>" class="waves-effect">
                                 <i class="mdi mdi-star"></i>
                                 <span>Calificaciones</span>
                             </a>
