@@ -9,7 +9,7 @@ class C_login extends CI_Controller {
 		$this->load->model('M_login');
 		$this->load->library("phpmailer_lib");
         $this->load->model('M_agregarUsuarios');
-        
+        $this->load->model('M_prototipo');
 
 	}
 //VISTAS
@@ -56,8 +56,10 @@ class C_login extends CI_Controller {
 
             if ($user->id_perfil == '1') {
 				$datos["title_meta"] = "Admin";
+                $data['conteo'] = $this->M_prototipo->C_usuarios();
+                $data['conteo_e'] = $this->M_prototipo->C_examenes();
 				$this->load->view('templates/header',$datos);
-				$this->load->view('Admin/InicioA');
+				$this->load->view('Admin/InicioA', $data);
 				$this->load->view('templates/footer');
                 
             } else {

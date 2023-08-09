@@ -46,5 +46,12 @@ class M_prototipo extends CI_Model{
 		$this->db->update('preguntas');
 	}
 
+	public function C_usuarios(){
+		return $this->db->count_all('usuarios');
+	}
+
+	public function C_examenes(){
+		return $this->db->count_all('examenes');
+	}
 }
 ?>

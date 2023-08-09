@@ -13,13 +13,16 @@ class C_admin extends CI_Controller {
 		$this->load->helper('url', 'form');
 		$this->load->model('M_agregarUsuarios');
 		$this->load->model('M_editarUsuarios');
+		$this->load->model('M_prototipo');
 	}
 
 	public function InicioA()
 	{
 		$datos["title_meta"] = "Admin";
+		$data['conteo'] = $this->M_prototipo->C_usuarios();
+		$data['conteo_e'] = $this->M_prototipo->C_examenes();
 		$this->load->view('templates/header',$datos);
-		$this->load->view('Admin/InicioA');
+		$this->load->view('Admin/InicioA', $data);
 		$this->load->view('templates/footer');
 	}
 	
@@ -191,5 +194,3 @@ class C_admin extends CI_Controller {
 		$this->load->view('templates/footer');
 	}
 }
-
-
