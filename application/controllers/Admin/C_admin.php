@@ -113,10 +113,11 @@ class C_admin extends CI_Controller {
 			$upload_data = $this->upload->data();
             $imagen_examen = $upload_data['file_name'];
 
-			$this->M_examen->cambiar_foto($id_usuario,$imagen_examen);
+			$this->M_examen->updateImgExamen($id_examen,$imagen_examen);
 		} 
         $data = array(
-            'titulo' => $titulo
+            'titulo' => $titulo,
+			'imagen_examen' => $imagen_examen
         );
         $this->db->where('id_examenes', $id);
         $this->db->update('examenes', $data);
@@ -131,34 +132,44 @@ class C_admin extends CI_Controller {
 
 
 	public function storeExamen(){
-		$titulo = $this->input->post('examen');
+		$titulo = $this->input->post('examen'); 
+
 		$config['upload_path'] = './assets/images/examenes';
-        $config['allowed_types'] = 'jpg|png';
-        $config['max_size'] = 2000;
-        $config['max_width'] = 1500;
-        $config['max_height'] = 1500;
-        $this->load->library('upload', $config);
-        if ($this->upload->do_upload('imagen_examen')) {
-            // El archivo se cargó correctamente
-            $upload_data = $this->upload->data();
-            $imagen_examen = $upload_data['file_name'];
-            // Llamamos al modelo para agregar el usuario, pasando el nombre de la foto ya obtenido.
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size'] = 2000;
+		$config['max_width'] = 1500;
+		$config['max_height'] = 1500;
+
+		$this->load->library('upload', $config);
+
+		if ($this->upload->do_upload('imagen_examen')) {
+			// El archivo se cargó correctamente
+			$upload_data = $this->upload->data();
+			$imagen_examen = $upload_data['file_name'];
+
 			$data = array(
 				'titulo' => $titulo,
-				'imagen_examen'=>$imagen_examen
+				'imagen_examen' =>$imagen_examen
 			);
+
 			$this->db->insert('examenes', $data);
 			if( $this->db->affected_rows() > 0 ) {
 				$examen_id = $this->db->insert_id();
-			}
-        } 
+		}
+		}else {
+                // Error en la carga del archivo
+               
+                $data['error'] = "Por favor suba una imagen.";
+				
+				$this->load->view('Admin/C_examen', $data);
+            }
 		foreach($this->input->post('preguntas') as $key=>$pregunta){
 			$registro=array('examen_id'=>$examen_id, 'pregunta_id'=>$key);
 			$this->M_examen->insertarPreguntasExamenes($registro);	
 		}
     	redirect('Admin/C_admin/O_examen');
 	}
-
+	
 	public function C_examen()
 	{
 		$data["title_meta"] = "Vista Examenes nuevos";

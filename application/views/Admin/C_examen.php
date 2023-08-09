@@ -16,7 +16,8 @@
                             <div class="row mb-3">
 
                                 <!-- Nombre del examen y foto -->
-                                <form action="<?php echo isset($examen) ? site_url().'/Admin/C_admin/updateExamen/'.$examen->id_examenes : site_url().'/Admin/C_admin/storeExamen/';?>" method="post">
+                                <form action="<?php echo isset($examen) ? site_url().'/Admin/C_admin/updateExamen/'.$examen->id_examenes : site_url().'/Admin/C_admin/storeExamen/';?>" method="post" enctype="multipart/form-data">
+
                                     <div class="row">
                                         <div class="align-self-center col-md-6">
                                             <div class="row">
@@ -28,16 +29,16 @@
                                             <div class="row">
                                                 <center>
                                                 <div class="cold-md-7">
-                                                    <img id="uploadPreview1" width="75%" height="75%"  src="<?php echo isset($examen) ? base_url().'/assets/images/examenes/'.$examen->imagen_examen : ''; ?>"/>
+                                                    <img id="uploadPreview1" width="75%" height="75%"  src="<?php echo isset($examen) ? base_url().'/assets/images/examenes'.$examen->imagen_examen : ''; ?>"/>
                                                 </div>
                                                 </center>   
                                             </div> 
                                         </div>
-                                        </form> 
+                                    
                                         <div class="col-md-5">
                                             <div class="card">
                                                 <div class="card-body">
-                                                    <form action="#" class="dropzone">
+                                                    
                                                         <div class="fallback">
                                                             <input id="uploadImage1" type="file" name="imagen_examen" onchange="previewImage(1);" >
                                                         </div>
@@ -49,7 +50,7 @@
                                                                 </center>
                                                             </div>
                                                         </div>
-                                                    </form>
+                                                    
                                                 </div>
                                             </div>
                                         </div> 
@@ -102,11 +103,12 @@
                                             <button button type="submit" class="btn btn-primary w-100 waves-effect waves-light"><?php echo isset($examen) ? 'Actualizar' : 'Guardar'; ?></button>
                                         </div>
                                     </div>
-                                                                            
-                                
+                                </form>                                   
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
 </div>
