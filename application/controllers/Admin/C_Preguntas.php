@@ -6,6 +6,7 @@ class C_Preguntas extends CI_Controller {
 		parent::__construct();
 		$this->load->model('M_prototipo');
 		$this->load->model('M_preguntas');
+		$this->load->helper('url');
 	}
 
 	public function preguntas() {
@@ -18,7 +19,7 @@ class C_Preguntas extends CI_Controller {
     public function Guardarpregunta(){
 		//print_r($this->input->post());
 		$res = $this->input->post('outer-group');
-		print_r($res [0]['inner-group']);	
+		//print_r($res [0]['inner-group']);	
 		$pregunta = array(
 			"texto" => $res [0]['texto_p']
 		);
@@ -82,7 +83,9 @@ class C_Preguntas extends CI_Controller {
 				}
 			
 		}
-		$this->preguntas();
+
+		redirect('Admin/C_preguntas/preguntas');
+		
 	}
 
 	public function actualizar_estatus($id_preguntas, $estatus_pregunta) {

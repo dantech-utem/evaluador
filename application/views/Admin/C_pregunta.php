@@ -87,9 +87,10 @@
                                                 <a type="button" class="btn btn-danger mb-2" href="<?php echo site_url(); ?>/Admin/C_Preguntas/preguntas">Cancelar</a>
                                             </div>
                                         </div>
-                                    </form>
+                                    
                                     
                                 </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -103,3 +104,6 @@
 
 
     </div>
+
+
+    
