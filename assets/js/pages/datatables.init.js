@@ -7,7 +7,10 @@ File: Datatables
 */
 
 $(document).ready(function() {
-    $('#datatable').DataTable();
+    $('#datatable').DataTable({
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+        }});
 
     //Buttons examples
     var table = $('#datatable-buttons').DataTable({

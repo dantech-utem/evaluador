@@ -30,6 +30,11 @@
                                         <p><?php echo $success; ?></p>
                                         <?php } ?>  
                                     </div>
+                                    <div class="alert-warning text-center mt-4 mb-4" role="alert">
+                                        <?php if (isset($failed)) { ?>
+                                        <p><?php echo $failed; ?></p>
+                                        <?php } ?>  
+                                    </div>
 
                                     <div class="alert alert-success text-center mb-4" role="alert">
                                         Ingresa tu correo electronico.

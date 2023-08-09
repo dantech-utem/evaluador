@@ -4,18 +4,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class M_login extends CI_Model {
 //LOGIN
 
-    public function obtenerUsuario($correo, $contraseña) {
-        $this->db->where('nombre', $correo);
-        $this->db->where('contraseña', $contraseña);
-        
-        $query = $this->db->get('usuarios');
+public function obtenerUsuario($correo, $contraseña) {
+    $this->db->where('nombre', $correo);
+    $this->db->where('contraseña', $contraseña);
+    
+    // Agregar el filtro del estado del usuario (asumiendo que el campo se llama 'estado')
+    $this->db->where('estatus_usuario', 1);
 
-        if ($query->num_rows() == 1) {
-            return $query->row();
-        } else {
-            return false;
-        }
+    $query = $this->db->get('usuarios');
+
+    if ($query->num_rows() == 1) {
+        return $query->row();
+    } else {
+        return false;
     }
+}
+
 //RECUPER CONTRASEÑA
 
     public function obtenerCorreo($correo) {
@@ -113,9 +117,23 @@ class M_login extends CI_Model {
             $this->db->insert('usuariosexamen', $data);
         }
     }
+    public function actualizar_contrasena($id_usuario,$contrasena)
+    {
+        $data = array(
+            'contraseña' =>$contrasena
+        );
 
+        $this->db->where('id_usuarios', $id_usuario);
+        $this->db->update('usuarios', $data);
+    }
+    public function cambiar_foto($id_usuario,$foto_perfil) {
 
-    
+        $data = array(
+            "foto_perfil"=>$foto_perfil
+        );
 
+        $this->db->where('id_usuarios', $id_usuario);
+        $this->db->update('usuarios', $data);
+    }
 }
 ?>
