@@ -75,5 +75,13 @@ class M_examen extends CI_Model{
         ->get()
         ->result();
     }
+    public function obtener_examenes_usuario($usuario_id) {
+      $this->db->select('*');
+      $this->db->from('usuariosexamen'); // Asegúrate de que estás consultando la tabla de asignaciones
+      $this->db->join('examenes', 'usuariosexamen.examen_id = id_examenes');
+      $this->db->where('usuariosexamen.usuario_id', $usuario_id);
+      $query = $this->db->get();
+      return $query->result();
+  }
 }
 ?>

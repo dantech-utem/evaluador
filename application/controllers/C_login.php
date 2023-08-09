@@ -7,6 +7,7 @@ class C_login extends CI_Controller {
 		parent::__construct();
         $this->load->helper('url', 'form');
 		$this->load->model('M_login');
+        $this->load->model('M_examen');
 		$this->load->library("phpmailer_lib");
         $this->load->model('M_agregarUsuarios');
         $this->load->model('M_prototipo');
@@ -63,10 +64,13 @@ class C_login extends CI_Controller {
 				$this->load->view('templates/footer');
                 
             } else {
-				$datos["title_meta"] = "Alumno";
-				$this->load->view('templates/header',$datos);
-				$this->load->view('Alumno/InicioU');
-				$this->load->view('templates/footer');
+				$usuario_id = $this->session->userdata('id_usuario');
+		$datos["title_meta"] = "Alumno";
+		$data['examenes']=$this->M_examen->obtenerExamenes();
+		$data['examenes'] = $this->M_examen->obtener_examenes_usuario($usuario_id);
+		$this->load->view('templates/header',$datos);
+		$this->load->view('Alumno/InicioU',$data);
+		$this->load->view('templates/footer');
                 
             }
         }
