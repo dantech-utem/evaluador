@@ -182,9 +182,4 @@ class C_admin extends CI_Controller {
 		$this->load->view('Alumno/R_examen', $data);
 		$this->load->view('templates/footer');
 	}
-<<<<<<< HEAD
 }
-=======
-}
-
->>>>>>> c8fe463cf71e3cf36e0cd5c0f6a946fe4da1142f
