@@ -11,7 +11,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="row mb-3">
-                        <form action="<?php echo isset($examen) ? site_url().'/Admin/C_admin/updateExamen/'.$examen->id_examenes : site_url().'/Admin/C_admin/storeExamen/';?>" method="post" enctype="multipart/form-data">
+                        <form id="imageForm" action="<?php echo isset($examen) ? site_url().'/Admin/C_admin/updateExamen/'.$examen->id_examenes : site_url().'/Admin/C_admin/storeExamen/';?>" method="post" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="align-self-center col-md-6">
                                     <div class="row">
@@ -20,12 +20,7 @@
                                     <div class="row">
                                         <input class="form-control" type="text" name="examen" id="examen" value="<?php echo isset($examen) ? ''.$examen->titulo : ''; ?>" required>
                                     </div>
-                                    <div class="row">
-                                        <center>
-                                        <div class="cold-md-7">
-                                            <img id="uploadPreview1" width="75%" height="75%"  src="<?php echo isset($examen) ? base_url().'/assets/images/examenes'.$examen->imagen_examen : ''; ?>"/>
-                                        </div>
-                                        </center>   
+                                    <div class="row"> 
                                     </div> 
                                 </div>
                             
@@ -34,7 +29,7 @@
                                         <div class="card-body">
                                             
                                                 <div class="fallback">
-                                                    <input id="uploadImage1" type="file" name="imagen_examen" onchange="previewImage(1);" >
+                                                    <input id="uploadImage1" type="file" name="imagen_examen" required>
                                                 </div>
                                                 <div class="dz-message needsclick">
                                                     <div class="align-self-center col-mb-6">
@@ -53,7 +48,8 @@
                                 <div class="row">
                                     <div class="card">
                                         <div class="card-body">
-                                                <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                        <table id="datatable" class="table table-bordered dt-responsive nowrap"
+                                            style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                                 <thead>
                                                     <tr>
                                                         <th>#</th>
@@ -61,8 +57,8 @@
                                                         <th>Acciones</th>
                                                     </tr>
                                                 </thead>
-                                                    <?php foreach ($preguntas as $pregunta): ?>
                                                         <tbody>
+                                                        <?php foreach ($preguntas as $pregunta): ?>
                                                             <tr>
                                                                 <th scope="row"><?php echo $pregunta->id_preguntas; ?></th>
                                                                 <td><?php echo $pregunta->texto; ?></td>
@@ -81,8 +77,8 @@
                                                                     </div>
                                                                 </td>
                                                             </tr>
+                                                            <?php endforeach; ?>
                                                         </tbody>
-                                                    <?php endforeach; ?>
                                                 </table>
                                         </div>
                                     </div>
@@ -104,3 +100,17 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.getElementById('imageForm').addEventListener('submit', function(event) {
+        const fileInput = document.getElementById('uploadImage1');
+        const selectedFile = fileInput.files[0];
+        
+        if (!selectedFile) {
+            event.preventDefault();
+            alert('Debes seleccionar una imagen antes de enviar el formulario.');
+        }
+    });
+</script>
+
+    

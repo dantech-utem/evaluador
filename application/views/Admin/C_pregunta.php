@@ -73,7 +73,7 @@
                                                             </div>
                                                             <div class="col-md-2 col-4">
                                                                 <input data-repeater-delete type="button"
-                                                                    class="btn btn-primary w-100 inner" value="Delete" />
+                                                                    class="btn btn-primary w-100 inner" value="Borrar" />
                                                             </div>
                                                         </div>
                                                         <?php } ?>      

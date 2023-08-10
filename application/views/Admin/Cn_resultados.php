@@ -28,8 +28,7 @@
                             <tr>
                                 <td><?php echo $usuario->id_usuarios; ?></td>
                                 <td>
-                                    <img src="" alt="Foto"> <br>
-                                    <?php echo $usuario->nombre; ?>
+                                <img src="<?php echo base_url() . "assets/images/users/" . $usuario->foto_perfil ?>" alt="Foto" class="rounded-circle header-profile-user"> <?php echo $usuario->nombre; ?> 
                                 </td>
                                 <td>
                                     <a href="<?php echo site_url() . "/Admin/C_admin/R_examenAdmin/" . $usuario->id_usuarios ?>" class="btn btn-sm btn-primary">Mostrar Calificaciones</a>
