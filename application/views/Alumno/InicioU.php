@@ -14,9 +14,9 @@
                 <div class="card-body text-center">
                     <i class="fas fa-user-shield fa-4x mb-4"></i>
                     <h5 class="card-title"><?php echo $examen->titulo; ?></h5>
-                    <a class="btn btn-info" href="<?php echo site_url() . "/Usuario/C_usuario/Examen"; ?>" class="waves-effect">
-                        <span>Empezar</span>
-                    </a>
+                    <a class="btn btn-info" href="<?php echo site_url() . "/Usuario/C_evaluacion/index/{$examen->id_examenes}"; ?>" class="waves-effect">
+                            <span>Empezar</span>
+                        </a>
                 </div>
             </div>
         </div>
