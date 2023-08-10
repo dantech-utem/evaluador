@@ -30,7 +30,7 @@
                         <tbody>
                             <?php foreach ($Preguntas as $preguntas) { ?>
                                 <tr>
-                                    <td>1</td>
+                                    <td><?php echo $preguntas->id_preguntas; ?></td>
                                     <td>
                                         <?php echo $preguntas->texto; ?>
                                     </td>
