@@ -27,9 +27,9 @@
                                 <?php foreach ($calificaciones as $calificacion): ?>
 
                                     <tr>
-                                        <th scope="row"><?php echo $calificacion->id_examenes; ?></th>
-                                        <td><?php echo $calificacion->examen; ?></td>
-                                        <td pattern=""><?php echo $calificacion->calificacionfinal; ?></td>
+                                        <th scope="row"><?php echo $calificacion->id_usuarios; ?></th>
+                                        <td><?php echo $calificacion->Examen; ?></td>
+                                        <td pattern=""><?php echo $calificacion->CalificacionFinal; ?></td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>

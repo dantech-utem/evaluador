@@ -56,9 +56,9 @@ public function insertarRespuesta() {
         
                 $this->M_evaluacion->guardarRespuesta($datos_respuesta);
 
+    redirect('/Usuario/C_usuario/InicioU');
     }
    
-    redirect('/Usuario/C_usuario/InicioU');
 }
 
 
