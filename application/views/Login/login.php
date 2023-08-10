@@ -3,8 +3,10 @@
     rel="stylesheet">
 <link href="<?php echo base_url(); ?>assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css"
     rel="stylesheet" />
+<link rel="icon" href="<?php echo base_url('assets/images/logop.ico'); ?>" type="image/x-icon">
+<link rel="shortcut icon" href=<?php echo base_url('assets/images/logop.ico'); ?>" type="image/x-icon">
 
-
+<title>Odabir</title>
 <body>
     <div class="account-pages my-5 pt-sm-5">
         <div class="container">

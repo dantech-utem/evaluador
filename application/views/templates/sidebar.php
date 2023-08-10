@@ -16,7 +16,7 @@
                         if ($rol == '1') {
                             echo "Administrador";
                         } else {
-                            echo "Usuario Normal";
+                            echo "Alumno";
                         }
                     ?>
                 </p>
