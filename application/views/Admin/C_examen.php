@@ -11,7 +11,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="row mb-3">
-                        <form id="imageForm" action="<?php echo isset($examen) ? site_url().'/Admin/C_admin/updateExamen/'.$examen->id_examenes : site_url().'/Admin/C_admin/storeExamen/';?>" method="post" enctype="multipart/form-data">
+                        <form action="<?php echo isset($examen) ? site_url().'/Admin/C_admin/updateExamen/'.$examen->id_examenes : site_url().'/Admin/C_admin/storeExamen/';?>" method="post" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="align-self-center col-md-6">
                                     <div class="row">
