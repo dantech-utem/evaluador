@@ -9,7 +9,7 @@ class C_evaluacion extends CI_Controller {
         $this->load->library('session');
     }
 
-
+// taer todo tanto como preguntas como espuesta en un array  
     public function index($examen_id) {
 
         $data['preguntas'] =$this->M_evaluacion->obtenerPreguntasExamenes($examen_id);
@@ -24,24 +24,35 @@ class C_evaluacion extends CI_Controller {
 		$this->load->view('templates/footer');
        
     }
+// registrando respuestas del usuario
 
-    public function registraRespuesta($id_pregunta)
-	{
-		//print_r($this->input->post());
-		
-		if($this->input->post()){
-			$res = $this->input->post('outer-group');
-			$this->M_evaluacion->updatePregunta($id_respuestas_usuarios,$res [0]['texto_p']);
-			$this->M_evaluacion->borrarRespuesta($id_pregunta);
-			
-			foreach($res[0]['inner-group'] as $id_respuestas_usuarios)
-				{
-					$this->Guardarrespuesta($id_pregunta, $respuestas);
-				}
-			
-		}
-		$this->preguntas();
-	}
+public function insertarRespuesta() {
+    $respuestas = $this->input->post(); 
+    $contadorPregunta =$this->input->post('contadorPregunta'); 
+    $usuario = $this->session->userdata('id_usuario'); 
+
+    // print_r($respuestas);
+    
+    for($i=1; $i<$contadorPregunta; $i++){
+        
+        $datos_respuesta = array(
+                    'usuario_id' => $usuario ,
+                    'examenpreguntas_id' => $this->input->post('pregunta_id'.$i),
+                    'respuesta_seleccionada_id' => $this->input->post('flexRadioDefault'.$i) 
+                );
+        
+                $this->M_evaluacion->guardarRespuesta($datos_respuesta);
+
+    }
+   
+
+    //     $this->M_evaluacion->guardarRespuesta($datos_respuesta);
+    // }
 
    
+    redirect('/Usuario/C_usuario/InicioU');
+}
+
+
+    
 }

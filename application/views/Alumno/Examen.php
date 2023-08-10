@@ -8,6 +8,7 @@
         </div>
     </div>
     <?php $cont = 1;?> <!-- inicia el examen--> 
+    <form method="post" action="<?php echo site_url().'/Usuario/C_evaluacion/insertarRespuesta'; ?>">
     
     <div class="row justify-content-center mt-5">  <!--Incrementamos el margen superior --> 
         <?php foreach($preguntas as $pregunta) { ?>
@@ -15,14 +16,14 @@
             <div class="card-body text-center">
                 <div class="pregresp">
                     <div class="pregunta">
-                        <h1 class="display-5"><?php echo $pregunta->texto;?></h1> <!-- Mostramos pregutnas--> 
-                    </div>    
+                        <h1 class="display-5"><?php echo $pregunta->texto;?></h1> 
+                        
+                        <input type="hidden" value="<?php echo $pregunta->id_examen_preguntas;?>" name="pregunta_id<?php echo $cont;?>"> 
+                    </div>   
                     <!-- mostramos respuesta falta el js para el boton type="radio"--> 
                         <?php foreach($respuestaspregunta as $respuesta) {?>
                             <?php if($pregunta->pregunta_id == $respuesta->pregunta_id) {?>
                                 <div class="respuestas"> 
-                                    <!-- muestra del cambio de color del boton -->
-                                    <!-- <button type="button" id="seleccionRespuesta" class="btn btn-lg btn-secondary mx-2 my-2 waves-effect waves-light" onclick="seleccionar(this);"><?php echo $respuesta->texto_r;?></button> -->
                                     <div class="form-check form-check-inline">
                                         <input type="radio" name="flexRadioDefault<?php echo $respuesta->pregunta_id;?>"
                                             class="form-check-input" value="<?php echo $respuesta->id_opciones_respuestas;?>" >
@@ -45,6 +46,7 @@
                             <div class="col-md-6">
                                 <!-- falta el form para enviar las respuestas al controlador con el submit  -->
                                 <button type="submit" class="btn btn-lg btn-outline-primary btn-block waves-effect waves-light" >Finalizar Examen</button>
+
                             </div>
                         <?php }else {?>
                             <div class="col-md-6">
@@ -55,7 +57,11 @@
                 </div>
             </div>
         </div>
+        
         <?php $cont++; }?>
+        <input type="hidden" value="<?php echo $cont;?>" name="contadorPregunta"> 
+
+        </form>
     </div>
     
 </div>
