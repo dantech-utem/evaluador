@@ -42,8 +42,8 @@
                                     </td>
                                     <td>
                                     <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" id="<?php echo $preguntas->id_preguntas; ?>" <?php echo ($preguntas->estatus_preguntas > 0) ? 'checked' : ''; ?> onClick="cambiarEstatus(this)">
-                                            <label class="form-check-label" for="<?php echo $preguntas->id_preguntas; ?>"><?php echo ($preguntas->estatus_preguntas > 0) ? 'Activo' : 'Inactivo'; ?></label>
+                                            <input class="form-check-input" type="checkbox" id="<?php echo $preguntas->id_preguntas; ?>" <?php echo ($preguntas->estatus_pregunta > 0) ? 'checked' : ''; ?> onClick="cambiarEstatus(this)">
+                                            <label class="form-check-label" for="<?php echo $preguntas->id_preguntas; ?>"><?php echo ($preguntas->estatus_pregunta > 0) ? 'Activo' : 'Inactivo'; ?></label>
                                         </div>
                                     </td>
                                 </tr>
