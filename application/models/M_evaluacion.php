@@ -31,14 +31,16 @@ class M_evaluacion extends CI_Model{
             ->get()
             ->result();
   }
+  public function calificacionCorrecta($id_opciones_respuestas){
+    return $this->db->select('*')
+            ->from('opcionesrespuesta',)
+            ->where('id_opciones_respuestas',$id_opciones_respuestas)
+            ->get()
+            ->row();
+  }
   public function guardarRespuesta($datos_respuesta) {
     $this->db->insert('respuestasusuarios', $datos_respuesta);
   }
 
-  public function guardarCalificacion($usuario_id, $aciertos) {
-    $this->db->where('usuario_id', $usuario_id);
-    $this->db->set('calificacion', $aciertos);
-    $this->db->update('respuestasusuarios');
-  }
     }
 ?>
