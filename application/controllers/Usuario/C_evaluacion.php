@@ -27,40 +27,35 @@ class C_evaluacion extends CI_Controller {
 // registrando respuestas del usuario
 
 public function insertarRespuesta() {
-  
     $respuestas = $this->input->post(); 
     $contadorPregunta =$this->input->post('contadorPregunta'); 
     $usuario = $this->session->userdata('id_usuario'); 
 
-    print_r($respuestas);
+    // print_r($respuestas);
     
     for($i=1; $i<$contadorPregunta; $i++){
         
-        $correcta = $this->M_evaluacion->calificacionCorrecta($this->input->post('flexRadioDefault'.$i));
-        // if($correcta->es_correcta == 1 ){
-        //     $calificacion = 100;
-            
-        // }
-        // else {
-        //     $calificacion = 0;
-        // }
-        
-        // ($correcta->es_correcta == 1) ? 100 : 0
+    $correcta = $this->M_evaluacion->calificacionCorrecta($this->input->post('flexRadioDefault'.$i));
 
+        
         $datos_respuesta = array(
                     'usuario_id' => $usuario ,
                     'examenpreguntas_id' => $this->input->post('pregunta_id'.$i),
                     'respuesta_seleccionada_id' => $this->input->post('flexRadioDefault'.$i),
-                    'calificacion' => ($correcta->es_correcta == 1) ? 100 : 0
+                    'calificacion' => ($correcta->es_correcta == 1) ? 100 : 0 
                 );
         
                 $this->M_evaluacion->guardarRespuesta($datos_respuesta);
 
-    redirect('/Usuario/C_usuario/InicioU');
     }
    
+
+    //     $this->M_evaluacion->guardarRespuesta($datos_respuesta);
+    // }
+
+   
+    redirect('/Usuario/C_usuario/InicioU');
 }
+//Hola
 
-
-    
 }
