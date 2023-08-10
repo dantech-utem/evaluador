@@ -1,8 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
 class C_admin extends CI_Controller {
-
 	public function __construct()
     {
         parent::__construct();
@@ -15,7 +13,6 @@ class C_admin extends CI_Controller {
 		$this->load->model('M_editarUsuarios');
 		$this->load->model('M_prototipo');
 	}
-
 	public function InicioA()
 	{
 		$datos["title_meta"] = "Admin";
@@ -33,7 +30,6 @@ class C_admin extends CI_Controller {
 		$this->load->view('Admin/C_pregunta');
 		$this->load->view('templates/footer');
 	}
-
 	public function O_examen()
 	{
 		$datos["title_meta"] = "Vista Examen";
@@ -42,7 +38,6 @@ class C_admin extends CI_Controller {
 		$this->load->view('Admin/O_examen', $data);
 		$this->load->view('templates/footer');
 	}
-
 	public function actualizar_estatus($id_examenes, $estatus) {
 		$this->M_examen->actualizar_estatus($id_examenes, $estatus);
 		//echo $id_examenes, $estatus;
@@ -54,7 +49,6 @@ class C_admin extends CI_Controller {
 		}
 		echo json_encode($bandera);
 	}
-
 	public function O_pregunta()
 	{
 		$datos["title_meta"] = "Vista Examen";
@@ -62,7 +56,6 @@ class C_admin extends CI_Controller {
 		$this->load->view('Admin/O_pregunta');
 		$this->load->view('templates/footer');
 	}
-
 	
 	public function updateExamen($id){
 		$titulo = $this->input->post('examen');
@@ -72,11 +65,9 @@ class C_admin extends CI_Controller {
         $config['max_width'] = 1500;
         $config['max_height'] = 1500;
 		$this->load->library('upload', $config);
-
 		if ($this->upload->do_upload('imagen_examen')) {
 			$upload_data = $this->upload->data();
             $imagen_examen = $upload_data['file_name'];
-
 			$this->M_examen->updateImgExamen($id_examen,$imagen_examen);
 		} 
         $data = array(
@@ -93,29 +84,22 @@ class C_admin extends CI_Controller {
 		        redirect('Admin/C_admin/editExamen/'.$id);
 	}
 	
-
-
 	public function storeExamen(){
 		$titulo = $this->input->post('examen'); 
-
 		$config['upload_path'] = './assets/images/examenes';
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size'] = 2000;
 		$config['max_width'] = 1500;
 		$config['max_height'] = 1500;
-
 		$this->load->library('upload', $config);
-
 		if ($this->upload->do_upload('imagen_examen')) {
 			// El archivo se cargó correctamente
 			$upload_data = $this->upload->data();
 			$imagen_examen = $upload_data['file_name'];
-
 			$data = array(
 				'titulo' => $titulo,
 				'imagen_examen' =>$imagen_examen
 			);
-
 			$this->db->insert('examenes', $data);
 			if( $this->db->affected_rows() > 0 ) {
 				$examen_id = $this->db->insert_id();
@@ -152,7 +136,6 @@ class C_admin extends CI_Controller {
         $this->load->view('Admin/C_examen', $datos);
         $this->load->view('templates/footer');
 	}
-
 	public function C_Usuario()
 	{
 		$datos["title_meta"] = "Crear Usuario";
@@ -168,7 +151,6 @@ class C_admin extends CI_Controller {
 		$this->load->view('Admin/Cn_resultados', $data);
 		$this->load->view('templates/footer');
 	}
-
 	public function R_contrasena()
 	{
 		$datos["title_meta"] = "Vista Resultados";
@@ -178,13 +160,7 @@ class C_admin extends CI_Controller {
 		$this->load->view('templates/footer');
 	}
 
-	public function R_examenUsuario(){
-		$datos["title_meta"] = "Resultado de examen";
-		$data['calificaciones']=$this->M_examen->obtenerCalificacion($this->session->userdata('id_usuario'));
-		$this->load->view('templates/header',$datos);
-		$this->load->view('Alumno/R_examen', $data);
-		$this->load->view('templates/footer');
-	}
+
 
 	public function R_examenAdmin($id_usuario){
 		$datos["title_meta"] = "Resultado de examen";
