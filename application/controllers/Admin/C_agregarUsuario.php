@@ -180,10 +180,29 @@ class C_agregarUsuario extends CI_Controller {
         // Pasa el ID del usuario a la vista
 		$datos["title_meta"] = "Admin";
 		$this->load->view('templates/header',$datos);
-		$data['examenes'] = $this->M_agregarUsuarios->obtenerExamenes();
+		// Obtener los exámenes disponibles
+        $examenes_disponibles = $this->M_agregarUsuarios->obtenerExamenes();
+    
+        // Obtener los IDs de los exámenes asignados al usuario
+        $examenes_asignados = $this->M_agregarUsuarios->obtenerExamenesAsignados($id_usuarios);
+    
+        // Filtrar los exámenes disponibles para excluir los asignados
+        $examenes_disponibles = array_filter($examenes_disponibles, function($examen) use ($examenes_asignados) {
+            return !in_array($examen['id_examenes'], $examenes_asignados);
+        });
+    
+        // Obtener los detalles de los exámenes asignados al usuario
+        $examenes_asignados_detalles = array();  // Inicializar un arreglo vacío
+        if (!empty($examenes_asignados)) {
+        $examenes_asignados_detalles = $this->M_agregarUsuarios->obtenerExamenesPorIDs($examenes_asignados);
+    }
         $data['id_usuarios'] = $id_usuarios;
-		$this->load->view('Admin/A_Examen', $data);
-		$this->load->view('templates/footer');
+        $data['examenes_asignados'] = $examenes_asignados_detalles;
+        $data['examenes'] = $examenes_disponibles;
+    
+        // Cargar la vista de asignar/desasignar exámenes
+        $this->load->view('Admin/A_Examen', $data);
+        $this->load->view('templates/footer');
 	}
     
     public function asignarExamen() {
@@ -195,7 +214,67 @@ class C_agregarUsuario extends CI_Controller {
         $this->M_agregarUsuarios->asignarExamenesUsuario($id_usuarios, $examenes_seleccionados);
     
         // Redirige a la página original o a cualquier otra que desees mostrar después de asignar los exámenes
-        $this->O_usuarios();
+         // Pasa el ID del usuario a la vista
+		$datos["title_meta"] = "Admin";
+		$this->load->view('templates/header',$datos);
+		// Obtener los exámenes disponibles
+        $examenes_disponibles = $this->M_agregarUsuarios->obtenerExamenes();
+    
+        // Obtener los IDs de los exámenes asignados al usuario
+        $examenes_asignados = $this->M_agregarUsuarios->obtenerExamenesAsignados($id_usuarios);
+    
+        // Filtrar los exámenes disponibles para excluir los asignados
+        $examenes_disponibles = array_filter($examenes_disponibles, function($examen) use ($examenes_asignados) {
+            return !in_array($examen['id_examenes'], $examenes_asignados);
+        });
+    
+        // Obtener los detalles de los exámenes asignados al usuario
+        $examenes_asignados_detalles = array();  // Inicializar un arreglo vacío
+        if (!empty($examenes_asignados)) {
+        $examenes_asignados_detalles = $this->M_agregarUsuarios->obtenerExamenesPorIDs($examenes_asignados);
+    }
+        $data['id_usuarios'] = $id_usuarios;
+        $data['examenes_asignados'] = $examenes_asignados_detalles;
+        $data['examenes'] = $examenes_disponibles;
+    
+        // Cargar la vista de asignar/desasignar exámenes
+        $this->load->view('Admin/A_Examen', $data);
+        $this->load->view('templates/footer');
+    }
+    public function desasignarExamen($id_usuarios) {
+        // Obtener los IDs de los exámenes a desasignar desde el formulario
+        $examen_id = $this->input->post('examenes_desasignar');
+    
+        // Llamar al modelo para desasignar los exámenes
+        $this->M_agregarUsuarios->desasignarExamenes($id_usuarios, $examen_id);
+    
+        // Redirigir a la vista de asignación de exámenes
+         // Pasa el ID del usuario a la vista
+		$datos["title_meta"] = "Admin";
+		$this->load->view('templates/header',$datos);
+		// Obtener los exámenes disponibles
+        $examenes_disponibles = $this->M_agregarUsuarios->obtenerExamenes();
+    
+        // Obtener los IDs de los exámenes asignados al usuario
+        $examenes_asignados = $this->M_agregarUsuarios->obtenerExamenesAsignados($id_usuarios);
+    
+        // Filtrar los exámenes disponibles para excluir los asignados
+        $examenes_disponibles = array_filter($examenes_disponibles, function($examen) use ($examenes_asignados) {
+            return !in_array($examen['id_examenes'], $examenes_asignados);
+        });
+    
+        // Obtener los detalles de los exámenes asignados al usuario
+        $examenes_asignados_detalles = array();  // Inicializar un arreglo vacío
+        if (!empty($examenes_asignados)) {
+        $examenes_asignados_detalles = $this->M_agregarUsuarios->obtenerExamenesPorIDs($examenes_asignados);
+    }
+        $data['id_usuarios'] = $id_usuarios;
+        $data['examenes_asignados'] = $examenes_asignados_detalles;
+        $data['examenes'] = $examenes_disponibles;
+    
+        // Cargar la vista de asignar/desasignar exámenes
+        $this->load->view('Admin/A_Examen', $data);
+        $this->load->view('templates/footer');
     }
     
 }

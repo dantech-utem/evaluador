@@ -54,6 +54,22 @@ class M_agregarUsuarios extends CI_Model{
             return array();
         }
     }
+
+    public function obtenerExamenesAsignados($id_usuarios) {
+        // Consulta para obtener los IDs de los exámenes asignados al usuario
+        $this->db->select('examen_id');
+        $this->db->where('usuario_id', $id_usuarios);
+        $query = $this->db->get('usuariosexamen');
+        $result = $query->result_array();
+
+        // Crear un array de IDs de exámenes asignados
+        $examenes_asignados = array();
+        foreach ($result as $row) {
+            $examenes_asignados[] = $row['examen_id'];
+        }
+
+        return $examenes_asignados;
+    }
     
      
     public function asignarExamenesUsuario($id_usuarios, $examenes_seleccionados) {
@@ -68,6 +84,19 @@ class M_agregarUsuarios extends CI_Model{
             
             $this->db->insert('usuariosexamen', $data);
         }
+    }
+    public function desasignarExamenes($id_usuarios, $examen_id) {
+        // Eliminar las asignaciones de exámenes para el usuario y los IDs proporcionados
+        $this->db->where('usuario_id', $id_usuarios);
+        $this->db->where_in('examen_id', $examen_id);
+        $this->db->delete('usuariosexamen');
+    }
+    
+    public function obtenerExamenesPorIDs($examen_id) {
+        // Consulta para obtener los detalles de los exámenes basados en los IDs proporcionados
+        $this->db->where_in('id_examenes', $examen_id);
+        $query = $this->db->get('examenes');
+        return $query->result_array();
     }
 
    //ACTUALIZAR STATUS DE USUARIO
