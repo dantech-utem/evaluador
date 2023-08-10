@@ -84,7 +84,7 @@ class C_Preguntas extends CI_Controller {
 			
 		}
 
-		$this->preguntas();
+		redirect('Admin/C_preguntas/preguntas');
 		
 	}
 
