@@ -21,10 +21,15 @@
                             <div class="respuestas">
                                 <?php foreach ($respuestaspregunta as $respuesta) {
                                     if ($pregunta->pregunta_id == $respuesta->pregunta_id) { ?>
-                                        <div class="form-check form-check-inline">
-                                            <input type="radio" name="flexRadioDefault<?php echo $cont; ?>"
+                                        <div class="form-check-inline">
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-text">
+                                                <input type="radio" name="flexRadioDefault<?php echo $respuesta->pregunta_id; ?>"
                                                 class="form-check-input" value="<?php echo $respuesta->id_opciones_respuestas; ?>">
-                                            <label class="form-check-label btn btn-lg btn-secondary mx-2 my-2 waves-effect waves-light" onclick="seleccionar(this);" for="flexRadioDefault<?php echo $cont; ?>"><?php echo $respuesta->texto_r; ?></label>
+                                                </div>
+                                                <input type="text" class="form-control adjust-width" size="35" for="flexRadioDefault<?php echo $respuesta->pregunta_id; ?> aria-label="Text input with checkbox" value="<?php echo $respuesta->texto_r; ?> " readonly> 
+                                            </div>
+                                            <!-- Fin de Respuesta -->
                                         </div>
                                 <?php }
                                 } ?>

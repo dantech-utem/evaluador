@@ -82,8 +82,15 @@
                                                         value="Agregar respuesta" id="crear_respuesta" />
                                                 </div>
 
-                                              
-                                                <button type="submit" class="btn btn-primary">Guardar</button>
+                                                <div class="row">
+                                <div class="col-md-6">
+                                    <a class="btn btn-danger w-100 waves-effect waves-light" type="button" href="<?php echo site_url(); ?>/Admin/C_Preguntas/preguntas">Cancelar</a>
+                                </div>
+                                <div class="align-self-md-end col-md-6">
+                                     <button type="submit" class="btn btn-primary w-100 waves-effect waves-light" >Guardar</button>
+                                </div>
+                            </div
+                                               
                                                 <a type="button" class="btn btn-danger mb-2" href="<?php echo site_url(); ?>/Admin/C_Preguntas/preguntas">Cancelar</a>
                                             </div>
                                         </div>

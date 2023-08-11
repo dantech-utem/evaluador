@@ -33,7 +33,7 @@
                         <li>
                             <a href="<?php echo site_url() . "/Admin/C_admin/InicioA"; ?>" class="waves-effect">
                                 <i class="mdi mdi-home"></i>
-                                <span>Panel De Control</span>
+                                <span>Panel de Control</span>
                             </a>
                         </li>
                         <li>
