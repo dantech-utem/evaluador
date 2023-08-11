@@ -22,6 +22,7 @@
                                     </div>
                                     <div class="row"> 
                                     <img id="imagePreview" src="#" alt="Vista previa de la imagen" style="max-width: 100%; max-height: 200px; display: none;">
+                                    <img id="imagePreview" src="#" alt="Vista previa de la imagen" style="max-width: 100%; max-height: 200px; display: none;">
                                     </div> 
                                 </div>
                             
@@ -60,25 +61,27 @@
                                                 </thead>
                                                         <tbody>
                                                         <?php foreach ($preguntas as $pregunta): ?>
-                                                            <tr>
-                                                                <th scope="row"><?php echo $pregunta->id_preguntas; ?></th>
-                                                                <td><?php echo $pregunta->texto; ?></td>
-                                                                <td>
-                                                                    <div class="form-check form-switch">
-                                                                        <?php 
-                                                                        $check=false;
-                                                                        if(isset($preguntasexam)){
-                                                                            foreach ($preguntasexam as $preguexam):
-                                                                                if($pregunta->id_preguntas == $preguexam->pregunta_id){
-                                                                                    $check=true;
-                                                                                }
-                                                                            endforeach; 
-                                                                        } ?>
-                                                                            <input class="form-check-input" type="checkbox" name="preguntas[<?php echo $pregunta->id_preguntas; ?>]" id="flexSwitchCheckChecked" <?php echo ($check) ? 'checked': '' ?>> 
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <?php endforeach; ?>
+                                                        <tr>
+                                                            <th scope="row"><?php echo $pregunta->id_preguntas; ?></th>
+                                                            <td><?php echo $pregunta->texto; ?></td>
+                                                            <td>
+                                                                <div class="form-check form-switch">
+                                                                    <?php 
+                                                                    $check = false;
+                                                                    if (isset($preguntasexam)) {
+                                                                        foreach ($preguntasexam as $preguexam) {
+                                                                            if ($pregunta->id_preguntas == $preguexam->pregunta_id && $preguexam->status == 1) {
+                                                                                $check = true;
+                                                                                break; // Importante: Salir del bucle al encontrar la pregunta
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                    ?>
+                                                                    <input class="form-check-input" type="checkbox" name="preguntas[<?php echo $pregunta->id_preguntas; ?>]" id="flexSwitchCheckChecked" <?php echo ($check) ? 'checked': '' ?>>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    <?php endforeach; ?>
                                                         </tbody>
                                                 </table>
                                         </div>
@@ -136,5 +139,3 @@
 });
 
 </script>
-
-    

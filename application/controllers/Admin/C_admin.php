@@ -57,66 +57,83 @@ class C_admin extends CI_Controller {
 		$this->load->view('templates/footer');
 	}
 	
-	public function updateExamen($id){
+	public function updateExamen($id) {
 		$titulo = $this->input->post('examen');
-		$config['upload_path'] = './assets/images/examenes';
-        $config['allowed_types'] = 'gif|jpg|png';
-        $config['max_size'] = 2000;
-        $config['max_width'] = 1500;
-        $config['max_height'] = 1500;
-		$this->load->library('upload', $config);
-		if ($this->upload->do_upload('imagen_examen')) {
-			$upload_data = $this->upload->data();
-            $imagen_examen = $upload_data['file_name'];
-			$this->M_examen->updateImgExamen($id_examen,$imagen_examen);
-		} 
-        $data = array(
-            'titulo' => $titulo,
-			'imagen_examen' => $imagen_examen
-        );
-        $this->db->where('id_examenes', $id);
-        $this->db->update('examenes', $data);
-		$this->M_examen->borrarPreguntasExamenes($id);
-		foreach($this->input->post('preguntas') as $key=>$pregunta){
-			$registro=array('examen_id'=>$id, 'pregunta_id'=>$key);
-			$this->M_examen->insertarPreguntasExamenes($registro);	
-		}
-		        redirect('Admin/C_admin/editExamen/'.$id);
-	}
+		$preguntas_seleccionadas = array_keys($this->input->post('preguntas'));
 	
-	public function storeExamen(){
-		$titulo = $this->input->post('examen'); 
 		$config['upload_path'] = './assets/images/examenes';
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size'] = 2000;
 		$config['max_width'] = 1500;
 		$config['max_height'] = 1500;
 		$this->load->library('upload', $config);
+	
 		if ($this->upload->do_upload('imagen_examen')) {
-			// El archivo se cargó correctamente
 			$upload_data = $this->upload->data();
 			$imagen_examen = $upload_data['file_name'];
+	
 			$data = array(
 				'titulo' => $titulo,
-				'imagen_examen' =>$imagen_examen
+				'imagen_examen' => $imagen_examen
 			);
-			$this->db->insert('examenes', $data);
-			if( $this->db->affected_rows() > 0 ) {
-				$examen_id = $this->db->insert_id();
+			$this->db->where('id_examenes', $id);
+			$this->db->update('examenes', $data);
+
+			$preguntas_examenes_actuales = $this->M_examen->obtenerPreguntasExamenes($id);
+	
+			foreach ($preguntas_examenes_actuales as $pregunta_actual) {
+				$pregunta_id = $pregunta_actual->pregunta_id;
+				$estatus = in_array($pregunta_id, $preguntas_seleccionadas) ? 1 : 0;
+				$this->M_examen->asociar_pregunta($id, $pregunta_id, $estatus);
+			}
+	
+			redirect('Admin/C_admin/editExamen/'.$id);
+		} else {
+			// Error en la carga del archivo
+			$data['error'] = "Por favor suba una imagen.";
+			$this->load->view('Admin/C_examen', $data);
 		}
-		}else {
-                // Error en la carga del archivo
-               
-                $data['error'] = "Por favor suba una imagen.";
-				
-				$this->load->view('Admin/C_examen', $data);
-            }
-		foreach($this->input->post('preguntas') as $key=>$pregunta){
-			$registro=array('examen_id'=>$examen_id, 'pregunta_id'=>$key);
-			$this->M_examen->insertarPreguntasExamenes($registro);	
-		}
-    	redirect('Admin/C_admin/O_examen');
 	}
+
+    public function storeExamen() {
+        $titulo = $this->input->post('examen');
+		$preguntas_seleccionadas = array_keys($this->input->post('preguntas'));
+
+        $config['upload_path'] = './assets/images/examenes';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = 2000;
+        $config['max_width'] = 1500;
+        $config['max_height'] = 1500;
+        $this->load->library('upload', $config);
+        
+        if ($this->upload->do_upload('imagen_examen')) {
+            $upload_data = $this->upload->data();
+            $imagen_examen = $upload_data['file_name'];
+            
+            $data = array(
+                'titulo' => $titulo,
+                'imagen_examen' => $imagen_examen
+            );
+            $this->db->insert('examenes', $data);
+            if ($this->db->affected_rows() > 0) {
+				$examen_id = $this->db->insert_id();
+			}
+	
+			foreach ($this->M_preguntas->obtenerPreguntas() as $pregunta) {
+				$this->M_examen->asociar_pregunta($examen_id, $pregunta->id_preguntas, 0);
+			}
+	
+			foreach ($preguntas_seleccionadas as $pregunta_id) {
+				$this->M_examen->asociar_pregunta($examen_id, $pregunta_id, 1);
+			}
+            
+            redirect('Admin/C_admin/O_examen');
+        } else {
+            // Error en la carga del archivo
+            $data['error'] = "Por favor suba una imagen.";
+            $this->load->view('Admin/C_examen', $data);
+        }
+    }
 	
 	public function C_examen()
 	{
@@ -132,6 +149,19 @@ class C_admin extends CI_Controller {
 		$datos['preguntasexam']=$this->M_examen->obtenerPreguntasExamenes($id);
 		$datos['examen']= $this->M_examen->getExamenId($id);
 		$datos['preguntas']=$this->M_preguntas->obtenerPreguntas();
+
+    	// Verificar si hay nuevas preguntas en la base de datos y vincularlas con estado 0
+    	$preguntas_seleccionadas = array_column($datos['preguntasexam'], 'pregunta_id');
+    	$preguntas_actuales = $this->M_preguntas->obtenerPreguntas();
+    	foreach ($preguntas_actuales as $pregunta) {
+    	    if (!in_array($pregunta->id_preguntas, $preguntas_seleccionadas)) {
+    	        // La pregunta no estaba seleccionada previamente, vincularla con estado 0
+    	        $this->M_examen->asociar_pregunta($id, $pregunta->id_preguntas, 0);
+    	        // Agregar la nueva pregunta al arreglo de preguntas seleccionadas para mostrarla en la vista
+    	        $preguntas_seleccionadas[] = $pregunta->id_preguntas;
+    	    }
+    	}		
+
 		$this->load->view('templates/header',$data);
         $this->load->view('Admin/C_examen', $datos);
         $this->load->view('templates/footer');
