@@ -59,76 +59,38 @@
         </div>
 
         <div class="col-xl-6">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title mb-4">Usuarios Destacados</h4>
-                    <ul class="inbox-wid list-unstyled">
-                        <li class="inbox-list-item">
-                            <a href="javascript: void(0);">
-                                <div class="d-flex align-items-start">
-                                    <div class="me-3 align-self-center">
-                                        <img src="assets/images/users/avatar-3.jpg" alt="avatar-3"
-                                            class="avatar-sm rounded-circle">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title mb-4">Alumnos Destacados</h4>
+            <ul class="inbox-wid list-unstyled">
+                <?php foreach ($usuarios as $usuario): ?>
+                    <?php foreach ($destacado as $destacados) { ?>
+                        <?php if ($destacados->Alumno == $usuario->nombre && $destacados->CalificacionFinal > 90): ?>
+                            <li class="inbox-list-item">
+                                <a href="javascript: void(0);">
+                                    <div class="d-flex align-items-start">
+                                        <div class="me-3 align-self-center">
+                                            <img src="<?php echo base_url() . "assets/images/users/" . $usuario->foto_perfil ?> " 
+                                                class="avatar-sm rounded-circle">
+                                        </div>
+                                        <div class="flex-1 overflow-hidden">
+                                            <h5 class="font-size-16 mb-1"><?php echo $destacados->Alumno; ?></h5>
+                                        </div>
                                     </div>
-                                    <div class="flex-1 overflow-hidden">
-                                        <h5 class="font-size-16 mb-1">Paul</h5>
-                                        <p class="text-truncate mb-0">Hey! there I'm available</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="inbox-list-item">
-                            <a href="javascript: void(0);">
-                                <div class="d-flex align-items-start">
-                                    <div class="me-3 align-self-center">
-                                        <img src="assets/images/users/avatar-4.jpg" alt="avatar-4"
-                                            class="avatar-sm rounded-circle">
-                                    </div>
-                                    <div class="flex-1 overflow-hidden">
-                                        <h5 class="font-size-16 mb-1">Mary</h5>
-                                        <p class="text-truncate mb-0">This theme is awesome!</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="inbox-list-item">
-                            <a href="javascript: void(0);">
-                                <div class="d-flex align-items-start">
-                                    <div class="me-3 align-self-center">
-                                        <img src="assets/images/users/avatar-5.jpg" alt="avatar-5"
-                                            class="avatar-sm rounded-circle">
-                                    </div>
-                                    <div class="flex-1 overflow-hidden">
-                                        <h5 class="font-size-16 mb-1">Cynthia</h5>
-                                        <p class="text-truncate mb-0">Nice to meet you</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="inbox-list-item">
-                            <a href="javascript: void(0);">
-                                <div class="d-flex align-items-start">
-                                    <div class="me-3 align-self-center">
-                                        <img src="assets/images/users/avatar-6.jpg" alt="avatar-6"
-                                            class="avatar-sm rounded-circle">
-                                    </div>
-                                    <div class="flex-1 overflow-hidden">
-                                        <h5 class="font-size-16 mb-1">Darren</h5>
-                                        <p class="text-truncate mb-0">I've finished it! See you so</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-
-                    <div class="text-center">
-                        <a href="<?php echo site_url() . "/Admin/C_admin/Cn_resultados"; ?>"  class="btn btn-primary">
-                            <span>Mas Informacion</span>
-                        </a>
-                    </div>
-                </div>
+                                </a>
+                            </li>
+                        <?php endif; ?>
+                    <?php } ?>
+                <?php endforeach; ?>
+            </ul>
+            <p class="text-truncate mb-0">Los alumnos en este apartado son los alumnos con calificación arriba de 90 en alguno de sus examenes.</p>
+            <div class="text-center">
+                <a href="<?php echo site_url() . "/Admin/C_admin/Cn_resultados"; ?>" class="btn btn-primary">
+                    <span>Mas Informacion</span>
+                </a>
             </div>
         </div>
-
     </div>
 </div>
+    
+              

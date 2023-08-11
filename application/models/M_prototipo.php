@@ -53,5 +53,13 @@ class M_prototipo extends CI_Model{
 	public function C_examenes(){
 		return $this->db->count_all('examenes');
 	}
+
+	public function AlumnosD() {
+		$this->db->select('*');
+		$this->db->from('vista_califinal');	
+		$this->db->where('CalificacionFinal >', 90);
+		$query = $this->db->get();
+		return $query->result();
+	}
 }
 ?>

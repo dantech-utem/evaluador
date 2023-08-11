@@ -16,8 +16,10 @@ class C_admin extends CI_Controller {
 	public function InicioA()
 	{
 		$datos["title_meta"] = "Admin";
+		$data['usuarios']=$this->M_usuarios->obtenerUsuarios();
 		$data['conteo'] = $this->M_prototipo->C_usuarios();
 		$data['conteo_e'] = $this->M_prototipo->C_examenes();
+		$data['destacado'] = $this->M_prototipo->AlumnosD();
 		$this->load->view('templates/header',$datos);
 		$this->load->view('Admin/InicioA', $data);
 		$this->load->view('templates/footer');
