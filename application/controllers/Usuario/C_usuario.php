@@ -25,8 +25,9 @@ class C_usuario extends CI_Controller {
 	{
 		$usuario_id = $this->session->userdata('id_usuario');
 		$datos["title_meta"] = "Alumno";
-		$data['examenes']=$this->M_examen->obtenerExamenes();
+		// $data['examenes']=$this->M_examen->obtenerExamenes();
 		$data['examenes'] = $this->M_examen->obtener_examenes_usuario($usuario_id);
+		$data['examenCalificados'] = $this->M_examen->obtenerCalificacion($usuario_id);
 		$this->load->view('templates/header',$datos);
 		$this->load->view('Alumno/InicioU',$data);
 		$this->load->view('templates/footer');

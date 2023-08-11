@@ -25,7 +25,6 @@
                             </thead>
                             <tbody>
                                 <?php foreach ($calificaciones as $calificacion): ?>
-
                                     <tr>
                                         <th scope="row"><?php echo $calificacion->id_usuarios; ?></th>
                                         <td><?php echo $calificacion->Examen; ?></td>
