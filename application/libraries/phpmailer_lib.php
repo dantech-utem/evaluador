@@ -19,12 +19,12 @@
             $mail->IsSMTP(); // telling the class to use SMTP
             $mail->Host = "smtp.gmail.com";
             $mail->SMTPAuth = true;
-            $mail->Username = "cadege23@gmail.com";
-            $mail->Password = "gcphtghruftxctlp";
+            $mail->Username = "odabir.dantechnology@gmail.com";
+            $mail->Password = "xeyaghizzacglwbl";
             $mail->SMTPSecure = "tls";
             $mail->Port = 587;
             $mail->CharSet = 'UTF-8';
-            $mail->setFrom("cadege23@gmail.com", "Carlos DG");
+            $mail->setFrom("odabir.dantechnology@gmail.com", "Odabir");
             $mail->isHTML(true); // Si tu correo contiene codigo HTML
             return $mail;
         }
