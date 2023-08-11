@@ -21,6 +21,7 @@
                                         <input class="form-control" type="text" name="examen" id="examen" value="<?php echo isset($examen) ? ''.$examen->titulo : ''; ?>" required>
                                     </div>
                                     <div class="row"> 
+                                    <img id="imagePreview" src="#" alt="Vista previa de la imagen" style="max-width: 100%; max-height: 200px; display: none;">
                                     </div> 
                                 </div>
                             
@@ -111,6 +112,29 @@
             alert('Debes seleccionar una imagen antes de enviar el formulario.');
         }
     });
+</script>
+
+<script>
+    document.getElementById('uploadImage1').addEventListener('change', function(event) {
+    const fileInput = event.target;
+    const selectedFile = fileInput.files[0];
+    const imagePreview = document.getElementById('imagePreview');
+    
+    if (selectedFile) {
+        const reader = new FileReader();
+        
+        reader.onload = function(e) {
+            imagePreview.src = e.target.result;
+            imagePreview.style.display = 'block'; // Mostrar la vista previa
+        };
+        
+        reader.readAsDataURL(selectedFile);
+    } else {
+        imagePreview.src = '#'; // Restablecer la vista previa
+        imagePreview.style.display = 'none'; // Ocultar la vista previa
+    }
+});
+
 </script>
 
     
